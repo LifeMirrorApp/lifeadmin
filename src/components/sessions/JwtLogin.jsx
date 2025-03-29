@@ -40,18 +40,24 @@ const JwtLogin = () => {
   const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
-
-  const apiUrl = process.env.REACT_APP_API_URL;
   const handleFormSubmit = async (values) => {
     setLoading(true);
     try {
-      await login(values.email, values.password);
-      navigate("/home");
-    } catch (e) {
+      const response = await login(values.email, values.password);
+
+      if (response.status === 200) {
+        toast.success("Login successful!");
+        navigate("/home");
+      } else {
+        toast.error("Login failed. Please check your credentials.");
+      }
+    } catch (error) {
+      toast.error("An error occurred during login. Please try again.");
+      console.error("Login Error:", error);
+    } finally {
       setLoading(false);
     }
   };
-
   // const redirectToGoogle = () => {
   //   console.log("Redirecting to Google OAuth...");
   //   window.location.href = `${process.env.REACT_APP_API_URL}/api/google`;
