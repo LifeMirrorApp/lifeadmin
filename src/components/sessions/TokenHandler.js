@@ -27,8 +27,8 @@ const TokenHandler = () => {
       axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
       // Navigate to /vision without tokens in URL
-      console.log("Tokens saved! Navigating to clean /vision...");
-      navigate("/vision", { replace: true });
+      console.log("Tokens saved! Navigating to clean /home...");
+      navigate("/home", { replace: true });
     } else {
       console.log("No tokens found in URL.");
     }

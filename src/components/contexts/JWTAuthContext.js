@@ -247,8 +247,8 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("refreshToken", refreshToken);
       axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
-      console.log("Tokens saved! Navigating to /vision...");
-      navigate("/vision", { replace: true });
+      console.log("Tokens saved! Navigating to /home...");
+      navigate("/home", { replace: true });
     } else {
       console.log("No valid tokens found in URL. Staying on /login.");
     }

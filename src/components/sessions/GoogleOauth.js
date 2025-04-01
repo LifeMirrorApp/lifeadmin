@@ -73,8 +73,8 @@ const GoogleOauth = () => {
       });
 
       // Navigate to /vision only once after saving tokens
-      console.log("Tokens saved! Navigating to /vision...");
-      navigate("/vision", { replace: true });
+      console.log("Tokens saved! Navigating to /home...");
+      navigate("/home", { replace: true });
     } else {
       console.log("No tokens found in URL.");
     }
