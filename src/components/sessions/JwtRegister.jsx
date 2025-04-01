@@ -94,6 +94,29 @@ const JwtRegister = () => {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    console.log("GoogleOauth useEffect triggered");
+    console.log("Full URL:", window.location.href);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get("accessToken");
+    const refreshToken = urlParams.get("refreshToken");
+
+    console.log("Extracted Tokens from URL:", { accessToken, refreshToken });
+
+    if (accessToken && refreshToken) {
+      console.log("Tokens found! Storing them in localStorage.");
+      localStorage.setItem("jwtToken", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+      axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+      console.log("Tokens saved! Navigating to /home...");
+      navigate("/home", { replace: true });
+    } else {
+      console.log("No valid tokens found in URL. Staying on /login.");
+    }
+  }, [navigate]);
+
   return (
     <>
       <ToastContainer position="top-center" />
@@ -219,34 +242,8 @@ const JwtRegister = () => {
                         Or continue with{" "}
                       </h5>
                       <div class="form-login social-login-buttons">
-                        {/*} <button
-                          type="button"
-                          class="btn btn-microsoft d-flex align-items-center justify-content-center mb-2"
-                          style={{
-                            width: "100%",
-                            backgroundColor: "#fff",
-                            color: "black",
-                            border: "1px solid black",
-                          }}
-                        >
-                          <img
-                            src={googlelogo}
-                            alt=""
-                            href="/session/google"
-                            style={{
-                              width: "25px",
-                              height: "25px",
-                              marginRight: "10px",
-                            }}
-                          />
-                          Continue with Google
-                        </button>*/}
                         <button
-                          onClick={() => {
-                            setFieldValue("isGoogleSignUp", true); // Mark Google signup
-                            redirectToGoogle(); // Redirect to OAuth
-                          }}
-                          // onClick={redirectToGoogle}
+                          onClick={redirectToGoogle}
                           class="btn btn-microsoft d-flex align-items-center justify-content-center mb-2"
                           style={{
                             width: "100%",
