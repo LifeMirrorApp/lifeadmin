@@ -10,6 +10,8 @@ import {
   FiUsers,
   FiSettings,
   FiLogOut,
+  FiBookOpen,
+  FiChevronDown,
 } from "react-icons/fi";
 import { useLocation } from "react-router-dom"; // Import useLocation
 
@@ -41,12 +43,12 @@ const SideNav = () => {
                 <ul>
                   <li className="submenu">
                     <a
-                      href="/vision"
+                      href="/home"
                       className={`${
                         openSubmenus.has(0) ? "subdrop active" : ""
-                      } ${isActive("/vision") ? "active-menu" : ""}`.trim()}
+                      } ${isActive("/home") ? "active-menu" : ""}`.trim()}
                       style={{
-                        backgroundColor: isActive("/vision")
+                        backgroundColor: isActive("/home")
                           ? "#800080"
                           : "transparent",
                         borderRadius: "5px",
@@ -55,49 +57,142 @@ const SideNav = () => {
                     >
                       <FiHome
                         size={20}
-                        color={isActive("/vision") ? "white" : "black"}
+                        color={isActive("/home") ? "white" : "black"}
                       />
                       <span
                         style={{
                           fontSize: "18px",
-                          color: isActive("/vision") ? "white" : "black",
+                          color: isActive("/home") ? "white" : "black",
                         }}
                       >
                         Dashboard
                       </span>
                     </a>
                   </li>
+
                   <li className="submenu">
                     <a
-                      href="/billing"
+                      href="#"
                       onClick={(e) => {
                         e.preventDefault();
                         toggleSubmenu(1);
                       }}
                       className={`${
                         openSubmenus.has(1) ? "subdrop active" : ""
-                      } ${isActive("/billing") ? "active-menu" : ""}`.trim()}
+                      }`.trim()}
                       style={{
-                        backgroundColor: isActive("/billing")
+                        backgroundColor: openSubmenus.has(1)
                           ? "#800080"
                           : "transparent",
                         borderRadius: "5px",
                         padding: "10px",
                       }}
                     >
-                      <FiCreditCard
+                      <FiBookOpen
                         size={20}
-                        color={isActive("/billing") ? "white" : "black"}
+                        color={openSubmenus.has(1) ? "white" : "black"}
                       />
                       <span
                         style={{
                           fontSize: "18px",
-                          color: isActive("/billing") ? "white" : "black",
+                          color: openSubmenus.has(1) ? "white" : "black",
                         }}
                       >
-                        Billing
+                        Bible
                       </span>
+                      <FiChevronDown
+                        style={{
+                          marginLeft: "auto",
+                          transform: openSubmenus.has(1)
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      />
                     </a>
+                    {openSubmenus.has(1) && (
+                      <ul className="submenu-list">
+                        <li>
+                          <a href="/bible/kjv">KJV (King James Version)</a>
+                        </li>
+                        <li>
+                          <a href="/bible/nkjv">NKJV</a>
+                        </li>
+                        <li>
+                          <a href="/bible/nlt">NLT</a>
+                        </li>
+                        <li>
+                          <a href="/bible/rsv">Revised Standard</a>
+                        </li>
+                        <li>
+                          <a href="/bible/all-translations">All Translations</a>
+                        </li>
+                        <li>
+                          <a href="/bible/devotional">Devotional Bible</a>
+                        </li>
+                        <li>
+                          <a href="/bible/storybook">Story Book Bible</a>
+                        </li>
+                        <li>
+                          <a href="/bible/journal">Journal</a>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li className="submenu">
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleSubmenu(2);
+                      }}
+                      className={`${
+                        openSubmenus.has(2) ? "subdrop active" : ""
+                      }`.trim()}
+                      style={{
+                        backgroundColor: openSubmenus.has(2)
+                          ? "#800080"
+                          : "transparent",
+                        borderRadius: "5px",
+                        padding: "10px",
+                      }}
+                    >
+                      <FiBookOpen
+                        size={20}
+                        color={openSubmenus.has(2) ? "white" : "black"}
+                      />
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          color: openSubmenus.has(2) ? "white" : "black",
+                        }}
+                      >
+                        Books
+                      </span>
+                      <FiChevronDown
+                        style={{
+                          marginLeft: "auto",
+                          transform: openSubmenus.has(2)
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      />
+                    </a>
+                    {openSubmenus.has(2) && (
+                      <ul className="submenu-list">
+                        <li>
+                          <a href="/books/fiction">Transformation books</a>
+                        </li>
+                        <li>
+                          <a href="/books/non-fiction">Devotional</a>
+                        </li>
+                        <li>
+                          <a href="/books/biography">Journals</a>
+                        </li>
+                        <li>
+                          <a href="/books/science">E-books</a>
+                        </li>
+                      </ul>
+                    )}
                   </li>
                   <li className="submenu">
                     <a
@@ -185,7 +280,7 @@ const SideNav = () => {
       <div className="bottom-nav mobile-only">
         <ul className="nav">
           <li className="nav-item">
-            <a href="/vision">
+            <a href="/home">
               <FiHome />
               <span>Home</span>
             </a>

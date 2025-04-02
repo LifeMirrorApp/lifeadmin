@@ -358,7 +358,7 @@ const TopNav = () => {
           <div className="header-left ">
             <a
               className="logo"
-              href="/vision"
+              href="/home"
               style={{ fontWeight: "800", color: "black", fontSize: "25px" }}
             >
               Life Mirror

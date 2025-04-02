@@ -46,10 +46,7 @@ import GoogleAuthHandler from "./GoogleAuthHandler";
 
 const routes = [
   { path: "/oauth-callback", element: <GoogleAuthHandler /> },
-  {
-    path: "/", // Landing page
-    element: <Home />,
-  },
+
   {
     children: [...AdminRoute, ...SalesRoute, ...ManagerRoute],
   },
@@ -58,7 +55,7 @@ const routes = [
   // { path: "/", element: <Navigate to="vision" /> },
   {
     path: "*", // Catch-all route to handle unmatched paths
-    element: <Navigate to="/vision" replace />,
+    element: <Navigate to="/login" replace />,
   },
 ];
 
