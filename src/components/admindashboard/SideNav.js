@@ -286,27 +286,37 @@ const SideNav = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/billing">
-              <FiCreditCard />
-              <span>Billing</span>
+            <a href="/bible">
+              <FiBookOpen
+              // size={20}
+              // color={openSubmenus.has(1) ? "white" : "black"}
+              />
+              <span>Bible</span>
             </a>
           </li>
           <li className="nav-item">
-            <a href="/community">
-              <FiUsers />
-              <span>Community</span>
+            <a href="/books">
+              <FiBookOpen
+              // size={20}
+              // color={openSubmenus.has(1) ? "white" : "black"}
+              />
+              <span>Books</span>
             </a>
           </li>
           <li className="nav-item">
             <a href="/settings">
-              <FiSettings />
-              <span>Settings</span>
+              <FiUsers
+              // size={20}
+              // color={isActive("/community") ? "white" : "black"}
+              />
+
+              <span>Community</span>
             </a>
           </li>
           <li className="nav-item">
             <a href="#">
-              <FiLogOut />
-              <span>Logout</span>
+              <FiSettings />
+              <span>Settings</span>
             </a>
           </li>
         </ul>

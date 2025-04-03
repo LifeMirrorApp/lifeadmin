@@ -79,7 +79,7 @@ const Kjv = () => {
           <SideNav />
           <div className="page-wrapper">
             <div className="content">
-              <div className="box-container">
+              <div>
                 <div>
                   <h2 className="text-xl font-bold mb-4">
                     King James Version (KJV)

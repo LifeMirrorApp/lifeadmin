@@ -97,6 +97,7 @@ import AllSprint from "./admin/AllSprint";
 import Retro from "./admin/Retro";
 import TokenHandler from "../sessions/TokenHandler";
 import Kjv from "./admin/Kjv";
+import Bible from "./admin/Bible";
 
 const AdminRoute = [
   {
@@ -131,6 +132,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <AllRefine />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/bible",
+    element: (
+      <AuthGuard>
+        <Bible />
       </AuthGuard>
     ),
   },
