@@ -82,7 +82,7 @@ const Revised = () => {
               <div>
                 <div>
                   <h2 className="text-xl font-bold mb-4">
-                    King James Version (KJV)
+                    Revised Standard Version
                   </h2>
                   <div className="flex gap-4 mb-4">
                     <select
