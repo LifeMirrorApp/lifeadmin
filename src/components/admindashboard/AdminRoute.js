@@ -98,6 +98,7 @@ import Retro from "./admin/Retro";
 import TokenHandler from "../sessions/TokenHandler";
 import Kjv from "./admin/Kjv";
 import Bible from "./admin/Bible";
+import Revised from "./admin/Revised";
 
 const AdminRoute = [
   {
@@ -140,6 +141,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Bible />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/bible/revised-standard",
+    element: (
+      <AuthGuard>
+        <Revised />
       </AuthGuard>
     ),
   },

@@ -121,7 +121,7 @@ const SideNav = () => {
                           <a href="/bible/nlt">NLT</a>
                         </li>
                         <li>
-                          <a href="/bible/rsv">Revised Standard</a>
+                          <a href="/bible/revised-standard">Revised Standard</a>
                         </li>
                         <li>
                           <a href="/bible/all-translations">All Translations</a>

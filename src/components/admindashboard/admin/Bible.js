@@ -84,7 +84,7 @@ const Bible = () => {
                             </li>
                             <li style={{ marginBottom: "15px" }}>
                               <a
-                                href="/bible/rsv"
+                                href="/bible/revised-standard"
                                 style={{
                                   padding: "12px",
                                   borderRadius: "5px",
