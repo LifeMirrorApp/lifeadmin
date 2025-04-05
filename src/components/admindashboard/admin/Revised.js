@@ -7,7 +7,7 @@ import SideNav from "../SideNav";
 import { FaSpinner } from "react-icons/fa";
 
 const API_KEY = "beb2f01fc849c95627083c43902f3f57";
-const BIBLE_ID = "40072c4a5aba4022-0"; // Example KJV ID, replace if necessary
+const BIBLE_ID = "40072c4a5aba4022-01"; // Example KJV ID, replace if necessary
 
 const Revised = () => {
   const [books, setBooks] = useState([]);
