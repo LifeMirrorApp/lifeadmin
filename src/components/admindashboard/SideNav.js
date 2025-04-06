@@ -127,7 +127,7 @@ const SideNav = () => {
                           <a href="/bible/all-translations">All Translations</a>
                         </li>
                         <li>
-                          <a href="/bible/devotional">Devotional Bible</a>
+                          <a href="/books/devotional">Devotional Bible</a>
                         </li>
                         <li>
                           <a href="/bible/storybook">Story Book Bible</a>
@@ -183,7 +183,7 @@ const SideNav = () => {
                           <a href="/books/fiction">Transformation books</a>
                         </li>
                         <li>
-                          <a href="/books/non-fiction">Devotional</a>
+                          <a href="/books/devotional">Devotional</a>
                         </li>
                         <li>
                           <a href="/books/biography">Journals</a>

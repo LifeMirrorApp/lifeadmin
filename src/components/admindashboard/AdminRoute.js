@@ -99,6 +99,7 @@ import TokenHandler from "../sessions/TokenHandler";
 import Kjv from "./admin/Kjv";
 import Bible from "./admin/Bible";
 import Revised from "./admin/Revised";
+import Books from "./admin/Books";
 
 const AdminRoute = [
   {
@@ -149,6 +150,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Revised />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/books/devotional",
+    element: (
+      <AuthGuard>
+        <Books />
       </AuthGuard>
     ),
   },
