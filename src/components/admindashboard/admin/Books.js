@@ -197,7 +197,18 @@ const Books = () => {
                                             </button>
                                           </span>
                                         </li>
-
+                                        <li
+                                          class="swiper-slide !w-auto flex items-center swiper-slide-visible swiper-slide-next"
+                                          role="group"
+                                          aria-label="2 / 13"
+                                        >
+                                          <button
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2 border-2 !border-gray"
+                                            id="hierarchical-item-categories"
+                                          >
+                                            Categories (1)
+                                          </button>
+                                        </li>
                                         <li
                                           class="swiper-slide !w-auto flex items-center swiper-slide-visible"
                                           role="group"
