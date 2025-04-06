@@ -131,7 +131,10 @@ const Books = () => {
                             <div class="max-w-screen-2xl">
                               <div class="flex gap-x-4 w-full items-center relative pr-[76px]">
                                 <div id="main-filter-button" class="pb-2">
-                                  <button class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 whitespace-nowrap flex items-center border-2 !border-gray">
+                                  <button
+                                    class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-black border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 whitespace-nowrap flex items-center border-2 !border-gray"
+                                    style={{ color: "white" }}
+                                  >
                                     {/*}  <svg
                                       xmlns="http://www.w3.org/2000/svg"
                                       viewBox="0 0 448 512"
@@ -170,7 +173,7 @@ const Books = () => {
                                         >
                                           <span class="relative inline-block">
                                             <button
-                                              class="px-4 py-1.5 text-sm leading-relaxed text-center transition-all duration-200 solid-focus-ring bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner !rounded-full whitespace-nowrap flex items-center"
+                                              class="px-4 py-1.5 text-sm leading-relaxed text-center transition-all duration-200 solid-focus-ring bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner !rounded-full whitespace-nowrap flex items-center"
                                               data-testid="listing-sort-button"
                                               id="headlessui-popover-button-:r2:"
                                               type="button"
@@ -194,25 +197,14 @@ const Books = () => {
                                             </button>
                                           </span>
                                         </li>
-                                        <li
-                                          class="swiper-slide !w-auto flex items-center swiper-slide-visible swiper-slide-next"
-                                          role="group"
-                                          aria-label="2 / 13"
-                                        >
-                                          <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2 border-2 !border-gray"
-                                            id="hierarchical-item-categories"
-                                          >
-                                            Categories (1)
-                                          </button>
-                                        </li>
+
                                         <li
                                           class="swiper-slide !w-auto flex items-center swiper-slide-visible"
                                           role="group"
                                           aria-label="3 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-releaseStatus"
                                           >
                                             Release Status
@@ -224,7 +216,7 @@ const Books = () => {
                                           aria-label="4 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-ageGroup"
                                           >
                                             Age Group
@@ -236,7 +228,7 @@ const Books = () => {
                                           aria-label="5 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-ages"
                                           >
                                             Age Range
@@ -248,7 +240,7 @@ const Books = () => {
                                           aria-label="6 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-audience"
                                           >
                                             Audience
@@ -260,43 +252,20 @@ const Books = () => {
                                           aria-label="7 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-mediumFormat"
                                           >
                                             Formats
                                           </button>
                                         </li>
-                                        <li
-                                          class="swiper-slide !w-auto flex items-center"
-                                          role="group"
-                                          aria-label="8 / 13"
-                                        >
-                                          <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
-                                            id="refinement-item-publisher"
-                                          >
-                                            Publisher
-                                          </button>
-                                        </li>
-                                        <li
-                                          class="swiper-slide !w-auto flex items-center"
-                                          role="group"
-                                          aria-label="9 / 13"
-                                        >
-                                          <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
-                                            id="refinement-item-subject"
-                                          >
-                                            Subject
-                                          </button>
-                                        </li>
+
                                         <li
                                           class="swiper-slide !w-auto flex items-center"
                                           role="group"
                                           aria-label="10 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="numeric-item-price"
                                           >
                                             Price
@@ -308,7 +277,7 @@ const Books = () => {
                                           aria-label="11 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-averageCustomerRatingInt"
                                           >
                                             Review Rating
@@ -320,7 +289,7 @@ const Books = () => {
                                           aria-label="12 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="toggle-item-isFreeShippingEligible"
                                           >
                                             Free Shipping
@@ -332,7 +301,7 @@ const Books = () => {
                                           aria-label="13 / 13"
                                         >
                                           <button
-                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa text-gray border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
+                                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-gray-fa  border border-d hover:border-gray hover:shadow-2nd-button-inner px-4 py-1.5 text-sm !rounded-full !px-4 !py-1.5 inline-block whitespace-nowrap flex items-center mx-2"
                                             id="refinement-item-language"
                                           >
                                             Language
@@ -442,37 +411,7 @@ const Books = () => {
                             </div>
                           </div>
                         </section>
-                        <section>
-                          <div class="max-w-screen-2xl w-full overflow-hidden max-h-[96px]">
-                            <div class="flex flex-wrap items-center gap-x-4">
-                              <h3 class="sr-only">Applied filters</h3>
-                              <div
-                                class="flex items-center border border-d rounded-full bg-gray-fa py-1.5 p-3 pr-2.5 mb-4"
-                                data-testid="applied-filter-categories.lvl0"
-                              >
-                                <p class="text-sm leading-5">Books</p>
-                                <button
-                                  aria-label="remove Books filter"
-                                  class="text-base ml-1.5"
-                                >
-                                  {/*}  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 384 512"
-                                    width="1em"
-                                    height="1em"
-                                    aria-hidden="true"
-                                    class="relative top-px fill-gray"
-                                  >
-                                    <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256z"></path>
-                                  </svg>*/}
-                                </button>
-                              </div>
-                              <p class="mb-4">
-                                <button class="link">clear all</button>
-                              </p>
-                            </div>
-                          </div>
-                        </section>
+
                         <aside class="fixed transition-all right-0 lg:[.cart-pane-on_&amp;]:right-[160px] 2xl:[.cart-pane-on_&amp;]:right-[160px] 2xl:[.cart-pane-on.cart-pane-open_&amp;]:right-[375px] z-100 max-w-0 bottom-1/2 font-sofia translate-x-full overflow-hidden z-50">
                           <a
                             id="scroll-to-top-results"
