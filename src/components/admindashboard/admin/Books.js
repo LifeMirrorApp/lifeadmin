@@ -109,7 +109,10 @@ const Books = () => {
                           class="flex flex-wrap justify-start mb-4"
                           data-testid="listing-title"
                         >
-                          <h2 class="font-semibold text-xl mr-2">Shop</h2>
+                          <h2 class="font-semibold text-xl mr-2">
+                            Shop Christian Books for Spiritual Growth and
+                            Discipleship
+                          </h2>
                           <p class="text-lg">
                             (
                             <span data-testid="listing-title-total-results">

@@ -295,7 +295,7 @@ const SideNav = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/books">
+            <a href="/booklist">
               <FiBookOpen
               // size={20}
               // color={openSubmenus.has(1) ? "white" : "black"}

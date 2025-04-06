@@ -100,6 +100,7 @@ import Kjv from "./admin/Kjv";
 import Bible from "./admin/Bible";
 import Revised from "./admin/Revised";
 import Books from "./admin/Books";
+import BookList from "./admin/BookList";
 
 const AdminRoute = [
   {
@@ -158,6 +159,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Books />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/booklist",
+    element: (
+      <AuthGuard>
+        <BookList />
       </AuthGuard>
     ),
   },
