@@ -196,6 +196,74 @@ const SideNav = () => {
                   </li>
                   <li className="submenu">
                     <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleSubmenu(1);
+                      }}
+                      className={`${
+                        openSubmenus.has(1) ? "subdrop active" : ""
+                      }`.trim()}
+                      style={{
+                        backgroundColor: openSubmenus.has(1)
+                          ? "#800080"
+                          : "transparent",
+                        borderRadius: "5px",
+                        padding: "10px",
+                      }}
+                    >
+                      <FiBookOpen
+                        size={20}
+                        color={openSubmenus.has(1) ? "white" : "black"}
+                      />
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          color: openSubmenus.has(1) ? "white" : "black",
+                        }}
+                      >
+                        Digital Media
+                      </span>
+                      <FiChevronDown
+                        style={{
+                          marginLeft: "auto",
+                          transform: openSubmenus.has(1)
+                            ? "rotate(180deg)"
+                            : "rotate(0deg)",
+                        }}
+                      />
+                    </a>
+                    {openSubmenus.has(1) && (
+                      <ul className="submenu-list">
+                        <li>
+                          <a href="/bible/kjv">KJV (King James Version)</a>
+                        </li>
+                        <li>
+                          <a href="/bible/nkjv">NKJV</a>
+                        </li>
+                        <li>
+                          <a href="/bible/nlt">NLT</a>
+                        </li>
+                        <li>
+                          <a href="/bible/revised-standard">Revised Standard</a>
+                        </li>
+                        <li>
+                          <a href="/bible/all-translations">All Translations</a>
+                        </li>
+                        <li>
+                          <a href="/books/devotional">Devotional Bible</a>
+                        </li>
+                        <li>
+                          <a href="/bible/storybook">Story Book Bible</a>
+                        </li>
+                        <li>
+                          <a href="/bible/journal">Journal</a>
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                  <li className="submenu">
+                    <a
                       href="/community"
                       onClick={(e) => {
                         e.preventDefault();
