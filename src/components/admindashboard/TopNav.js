@@ -336,6 +336,8 @@ import { FiXCircle } from "react-icons/fi";
 import lg from "../admindashboard/ourcolor.png";
 import { FaEllipsisV } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
+import { FiShoppingCart } from "react-icons/fi";
+
 import "./TopNav.css";
 import { FiHelpCircle } from "react-icons/fi";
 const TopNav = () => {
@@ -373,6 +375,16 @@ const TopNav = () => {
               >
                 <FiBell />
                 <span className="badge">2</span>
+              </a>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                href="/cart"
+                className="dropdown-toggle"
+                style={{ fontSize: "30px" }}
+              >
+                <FiShoppingCart />
+                <span className="badge">3</span> {/* Example cart count */}
               </a>
             </li>
             <li className="nav-item dropdown">
