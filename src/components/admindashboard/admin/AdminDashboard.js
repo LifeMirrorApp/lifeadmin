@@ -97,13 +97,13 @@ const AdminDashboard = () => {
                 </div>
               </div>
               <div
-                class="text-gray max-w-screen-2xl px-4 py-8 mx-auto"
+                class="text-black max-w-screen-2xl px-4 py-8 mx-auto"
                 id="featured-categories:homepage_featured_categories"
               >
                 <div class="w-full">
                   <div class="text-center mb-6 md:mb-12">
                     <h3 class="text-2xl md:text-3xl xl:text-4xl">
-                      Resource every mission.
+                      Find any resources
                     </h3>
                     <h4 class="text-lg mt-4 max-w-xl mx-auto">
                       Your church covers a lot of ground. That's why Lifeway
