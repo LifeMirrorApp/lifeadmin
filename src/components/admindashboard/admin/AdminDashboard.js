@@ -22,653 +22,500 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const AdminDashboard = () => {
   const { user } = useAuth();
-  const [visions, setVisions] = useState([]);
-  const [boardVisions, setBoardVisions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [boardType, setBoardType] = useState("manual");
-  const apiUrl = process.env.REACT_APP_API_URL;
-  const [boardvision, setBoardVision] = useState([]);
-  const [points, setPoints] = useState([]);
-  const { isSidebarOpen } = useSidebar(); // use context to get sidebar state
-  const [showModal, setShowModal] = useState(false);
-  const [showModals, setShowModals] = useState(false);
-  const [showModalss, setShowModalss] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [layout, setLayout] = useState([]);
-  const [visionId, setVisionId] = useState(null);
-  const [selectedVision, setSelectedVision] = useState(null);
-  const [boardSize, setBoardSize] = useState("4x4");
-  const visionBoardRef = useRef(null);
-
-  const handlePrint = () => {
-    if (visionBoardRef.current) {
-      const printContents = visionBoardRef.current.innerHTML;
-      const originalContents = document.body.innerHTML;
-      document.body.innerHTML = printContents;
-      window.print();
-      document.body.innerHTML = originalContents;
-      window.location.reload(); // Reload to restore the original page
-    }
-  };
-  const boardOptions = {
-    "2x2": { cols: 2, rows: 2 },
-    "3x3": { cols: 3, rows: 3 },
-    "4x4": { cols: 4, rows: 4 },
-    custom: { cols: 5, rows: 5 },
-  };
-  const { rows, cols } = boardOptions[boardSize];
-  const handleSizeChange = (size) => {
-    setBoardSize(size);
-    const { cols, rows } = boardOptions[size];
-
-    // Ensure visions is an array before mapping
-    setLayout(
-      (visions || []).map((vision, index) => ({
-        i: vision.id.toString(),
-        x: index % cols,
-        y: Math.floor(index / cols),
-        w: 1,
-        h: 1,
-      }))
-    );
-  };
-  // Fetch available visions (from API)
-  useEffect(() => {
-    const fetchVisions = async () => {
-      try {
-        const token = localStorage.getItem("jwtToken");
-        if (!token) {
-          console.error("No authentication token found");
-          return;
-        }
-
-        const userId = user?._id; // Ensure user ID is available
-
-        // Fetch user-created visions
-        const userVisionsResponse = await axios.get(`${apiUrl}/api/get-all`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        // Fetch template visions
-        const templateVisionsResponse = await axios.get(
-          `${apiUrl}/api/get-template-visions/${userId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        // Merge both visions
-        setVisions([
-          ...userVisionsResponse.data,
-          ...templateVisionsResponse.data,
-        ]);
-      } catch (error) {
-        console.error("Error fetching visions:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVisions();
-  }, [user]);
-  // useEffect(() => {
-  //   if (boardType === "template") {
-  //     setBoardVisions(
-  //       Array(16) // 4x4 grid
-  //         .fill()
-  //         .map((_, index) => ({
-  //           _id: `template-${index}`,
-  //           imageUrl: `https://source.unsplash.com/random/200x200?sig=${index}`,
-  //         }))
-  //     );
-  //   } else {
-  //     setBoardVisions([]);
-  //   }
-  // }, [boardType]);
-
-  useEffect(() => {
-    if (boardType === "template") {
-      const localImages = [
-        "/images/1.jpg",
-        "/images/2.jpg",
-        "/images/3.jpg",
-        "/images/4.jpg",
-        "/images/5.png",
-        "/images/6.jpg",
-        "/images/7.jpg",
-        "/images/8.jpg",
-        "/images/9.jpg",
-        "/images/10.jpg",
-        "/images/11.jpg",
-        "/images/12.jpg",
-        "/images/13.jpg",
-        "/images/14.jpg",
-        "/images/15.jpg",
-        "/images/16.jpg",
-      ];
-
-      setBoardVisions(
-        localImages.map((img, index) => ({
-          _id: `template-${index}`,
-          imageUrl: img,
-        }))
-      );
-    } else {
-      setBoardVisions([]);
-    }
-  }, [boardType]);
-
-  // Fetch visions already on the board
-  // useEffect(() => {
-  //   const fetchBoardVisions = async () => {
-  //     try {
-  //       const token = localStorage.getItem("jwtToken");
-  //       if (!token) {
-  //         console.error("No authentication token found");
-  //         return;
-  //       }
-
-  //       const userId = user?._id;
-
-  //       // Fetch visions on the board
-  //       const userVisionsResponse = await axios.get(
-  //         `${apiUrl}/api/get-all-board`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-
-  //       // Fetch template visions on board
-  //       const templateVisionsResponse = await axios.get(
-  //         `${apiUrl}/api/get-template-visions-board/${userId}`,
-  //         {
-  //           headers: {
-  //             Authorization: `Bearer ${token}`,
-  //           },
-  //         }
-  //       );
-
-  //       // Merge both board visions
-  //       setBoardVisions([
-  //         ...userVisionsResponse.data,
-  //         ...templateVisionsResponse.data,
-  //       ]);
-  //     } catch (error) {
-  //       console.error("Error fetching visions:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchBoardVisions();
-  // }, [user]);
-  // useEffect(() => {
-  //   const fetchBoardVisions = async () => {
-  //     try {
-  //       const token = localStorage.getItem("jwtToken");
-  //       if (!token) {
-  //         console.error("No authentication token found");
-  //         return;
-  //       }
-
-  //       const userId = user?._id;
-  //       let mergedVisions = [];
-
-  //       // Fetch user visions on the board
-  //       const userVisionsResponse = await axios.get(
-  //         `${apiUrl}/api/get-all-board`,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-
-  //       // Fetch template visions on board
-  //       const templateVisionsResponse = await axios.get(
-  //         `${apiUrl}/api/get-template-visions-board/${userId}`,
-  //         { headers: { Authorization: `Bearer ${token}` } }
-  //       );
-
-  //       mergedVisions = [
-  //         ...userVisionsResponse.data,
-  //         ...templateVisionsResponse.data,
-  //       ];
-
-  //       // If it's a template board, add local images *only if there are missing slots*
-  //       if (boardType === "template") {
-  //         const localImages = [
-  //           "/images/1.jpg",
-  //           "/images/2.jpg",
-  //           "/images/3.jpg",
-  //           "/images/4.jpg",
-  //           "/images/5.png",
-  //           "/images/6.jpg",
-  //           "/images/7.jpg",
-  //           "/images/8.jpg",
-  //           "/images/9.jpg",
-  //           "/images/10.jpg",
-  //           "/images/11.jpg",
-  //           "/images/12.jpg",
-  //           "/images/13.jpg",
-  //           "/images/14.jpg",
-  //           "/images/15.jpg",
-  //           "/images/16.jpg",
-  //         ];
-
-  //         // Shuffle local images
-  //         const shuffledImages = [...localImages].sort(
-  //           () => 0.5 - Math.random()
-  //         );
-
-  //         // Fill missing slots up to 16 images
-  //         while (mergedVisions.length < 16 && shuffledImages.length > 0) {
-  //           mergedVisions.push({
-  //             _id: `template-${mergedVisions.length}`,
-  //             imageUrl: shuffledImages.pop(),
-  //           });
-  //         }
-  //       }
-
-  //       setBoardVisions(mergedVisions);
-  //     } catch (error) {
-  //       console.error("Error fetching visions:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchBoardVisions();
-  // }, [user, boardType]);
-  useEffect(() => {
-    const fetchBoardVisions = async () => {
-      try {
-        setLoading(true); // Start loading state
-
-        const token = localStorage.getItem("jwtToken");
-        if (!token) {
-          console.error("No authentication token found");
-          return;
-        }
-
-        const userId = user?._id;
-        let mergedVisions = [];
-
-        console.log("Fetching board visions...");
-
-        // Fetch user visions on the board
-        const userVisionsResponse = await axios.get(
-          `${apiUrl}/api/get-all-board`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-
-        console.log("User Visions Response:", userVisionsResponse.data);
-
-        // Fetch template visions on board
-        const templateVisionsResponse = await axios.get(
-          `${apiUrl}/api/get-template-visions-board/${userId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-
-        console.log("Template Visions Response:", templateVisionsResponse.data);
-
-        // Merge both fetched visions
-        mergedVisions = [
-          ...userVisionsResponse.data,
-          ...templateVisionsResponse.data,
-        ];
-
-        console.log("Merged Visions Before Local Images:", mergedVisions);
-
-        // Check if fetched visions are actually available
-        if (mergedVisions.length === 0) {
-          console.warn("⚠️ No fetched visions found, using local images...");
-        } else {
-          console.log("✅ Fetched visions found, using them.");
-        }
-
-        // If it's a template board and no visions were fetched, use local images
-        if (boardType === "template") {
-          const localImages = [
-            "/images/1.jpg",
-            "/images/2.jpg",
-            "/images/3.jpg",
-            "/images/4.jpg",
-            "/images/5.png",
-            "/images/6.jpg",
-            "/images/7.jpg",
-            "/images/8.jpg",
-            "/images/9.jpg",
-            "/images/10.jpg",
-            "/images/11.jpg",
-            "/images/12.jpg",
-            "/images/13.jpg",
-            "/images/14.jpg",
-            "/images/15.jpg",
-            "/images/16.jpg",
-          ];
-
-          // Shuffle local images
-          const shuffledImages = [...localImages].sort(
-            () => 0.5 - Math.random()
-          );
-
-          console.log("Shuffled Local Images:", shuffledImages);
-
-          // Ensure the board has at most 16 images
-          while (mergedVisions.length < 16 && shuffledImages.length > 0) {
-            mergedVisions.push({
-              _id: `template-${mergedVisions.length}`,
-              imageUrl: shuffledImages.pop(),
-            });
-          }
-
-          console.log(
-            "Final Board Visions After Adding Local Images:",
-            mergedVisions
-          );
-        }
-
-        setBoardVisions(mergedVisions);
-      } catch (error) {
-        console.error("❌ Error fetching visions:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBoardVisions();
-  }, [user, boardType]); // Dependencies ensure the board updates correctly
-
-  useEffect(() => {
-    console.log("useEffect triggered"); // Check if it runs
-  }, [user, boardType]);
-
-  // Handle Drag-and-Drop
-  // const handleDragEnd = async (result) => {
-  //   if (!result.destination) return; // Ignore invalid drops
-
-  //   const { source, destination } = result;
-
-  //   if (source.droppableId === destination.droppableId) {
-  //     return; // No need to update the database if staying in the same list
-  //   }
-
-  //   const updatedVisions = [...visions];
-  //   const updatedBoardVisions = [...boardVisions];
-
-  //   let movedItem;
-
-  //   if (source.droppableId === "visionsList") {
-  //     movedItem = updatedVisions.splice(source.index, 1)[0];
-  //     if (boardType === "template") {
-  //       updatedBoardVisions = updatedBoardVisions.filter(
-  //         (item) => !item._id.startsWith("template-") // Remove first template image
-  //       );
-  //     }
-
-  //     updatedBoardVisions.splice(destination.index, 0, movedItem);
-
-  //     // await moveToBoard(movedItem._id);
-  //     await moveToBoard(movedItem);
-  //   } else {
-  //     movedItem = updatedBoardVisions.splice(source.index, 1)[0];
-  //     updatedVisions.splice(destination.index, 0, movedItem);
-  //     await removeFromBoard(movedItem._id); // Update database
-  //   }
-
-  //   setVisions(updatedVisions);
-  //   setBoardVisions(updatedBoardVisions);
-  // };
-
-  const handleDragEnd = async (result) => {
-    if (!result.destination) return; // Ignore invalid drops
-
-    const { source, destination } = result;
-    const isTemplateBoard = boardType === "template";
-    if (source.droppableId === destination.droppableId) {
-      return; // No need to update the database if staying in the same list
-    }
-    // Clone visions to avoid mutating state directly
-    const updatedVisions = [...visions];
-    let updatedBoardVisions = [...boardVisions];
-    let movedItem;
-
-    if (source.droppableId === "visionsList") {
-      movedItem = updatedVisions.splice(source.index, 1)[0];
-
-      // If dropping onto a template board, do NOT remove template images
-      if (boardType === "template") {
-        updatedBoardVisions = updatedBoardVisions.filter(
-          (item) => !item._id.startsWith("template-") // Remove first template image
-        );
-      }
-
-      updatedBoardVisions.splice(destination.index, 0, movedItem);
-
-      // Ensure correct API is called
-      await moveToBoard(movedItem, isTemplateBoard);
-    } else {
-      movedItem = updatedBoardVisions.splice(source.index, 1)[0];
-      updatedVisions.splice(destination.index, 0, movedItem);
-      await removeFromBoard(movedItem._id);
-    }
-
-    setVisions(updatedVisions);
-    setBoardVisions(updatedBoardVisions);
-  };
-  const handlePlaceVision = (row, col) => {
-    if (selectedVision) {
-      setBoardVisions((prev) => [
-        ...prev,
-        { ...selectedVision, row, col }, // Add selected vision at chosen spot
-      ]);
-      setSelectedVision(null); // Clear selection after placing
-    }
-  };
-  // const moveToBoard = async (id) => {
-  //   const token = localStorage.getItem("jwtToken");
-  //   if (!token) {
-  //     console.error("No authentication token found");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch(`${apiUrl}/api/move-to-board/${id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ board: true }),
-  //     });
-
-  //     if (!response.ok) {
-  //       console.error("Failed to update vision to board");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error moving vision to board:", error);
-  //   }
-  // };
-  // const moveToBoard = async (vision) => {
-  //   if (!vision || !vision._id) {
-  //     console.error("Invalid vision object, missing _id");
-  //     return;
-  //   }
-
-  //   const token = localStorage.getItem("jwtToken");
-  //   if (!token) {
-  //     console.error("No authentication token found");
-  //     return;
-  //   }
-
-  //   // Use the appropriate endpoint based on `vision.imageUrls?.[0]`
-  //   const endpoint = vision.imageUrls?.[0]
-  //     ? "move-to-board-template"
-  //     : "move-to-board";
-
-  //   try {
-  //     const response = await fetch(`${apiUrl}/api/${endpoint}/${vision._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ board: true }),
-  //     });
-
-  //     if (!response.ok) {
-  //       console.error("Failed to update vision to board");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error moving vision to board:", error);
-  //   }
-  // };
-
-  const moveToBoard = async (vision) => {
-    if (!vision || !vision._id) {
-      console.error("Invalid vision object, missing _id");
-      return;
-    }
-
-    const token = localStorage.getItem("jwtToken");
-    if (!token) {
-      console.error("No authentication token found");
-      return;
-    }
-
-    // `vision.imageUrls?.[0]`;
-    const endpoint = vision.imageUrls?.[0]
-      ? "move-to-board-template"
-      : "move-to-board";
-
-    try {
-      const response = await fetch(`${apiUrl}/api/${endpoint}/${vision._id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ board: true }),
-      });
-
-      if (!response.ok) {
-        console.error("Failed to update vision to board");
-      }
-    } catch (error) {
-      console.error("Error moving vision to board:", error);
-    }
-  };
-
-  // const moveToBoard = async (vision) => {
-  //   if (!vision || !vision._id) {
-  //     console.error("Invalid vision object, missing _id");
-  //     return;
-  //   }
-
-  //   const token = localStorage.getItem("jwtToken");
-  //   if (!token) {
-  //     console.error("No authentication token found");
-  //     return;
-  //   }
-
-  //   const endpoint = vision.imageUrls?.[0]
-  //     ? "move-to-board-template"
-  //     : "move-to-board";
-
-  //   try {
-  //     const response = await fetch(`${apiUrl}/api/${endpoint}/${vision._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ board: true }),
-  //     });
-
-  //     if (!response.ok) {
-  //       const errorData = await response.json();
-  //       console.error("Failed to update vision to board:", errorData.message);
-  //     } else {
-  //       const data = await response.json();
-  //       console.log("Success:", data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error moving vision to board:", error);
-  //   }
-  // };
-
-  const removeFromBoard = async (id) => {
-    const token = localStorage.getItem("jwtToken");
-    if (!token) {
-      console.error("No authentication token found");
-      return;
-    }
-
-    try {
-      const response = await fetch(`${apiUrl}/api/move-to-board/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ board: false }),
-      });
-
-      if (!response.ok) {
-        console.error("Failed to update vision back to available");
-      }
-    } catch (error) {
-      console.error("Error removing vision from board:", error);
-    }
-  };
-
-  const updateTableData = async () => {
-    try {
-      const userId = user._id; // Make sure you have access to the logged-in user's ID
-      const [manualVisionsRes, templateVisionsRes] = await Promise.all([
-        axios.get(`${apiUrl}/api/get-all`),
-        axios.get(`${apiUrl}/api/get-template-visions/${userId}`),
-      ]);
-
-      // Merge both responses into one array
-      const combinedVisions = [
-        ...manualVisionsRes.data,
-        ...templateVisionsRes.data,
-      ];
-
-      setVisions(combinedVisions); // Update the state with merged visions
-    } catch (error) {
-      console.error("Error fetching updated visions:", error);
-    }
-  };
-  const updateBoardTableData = async () => {
-    try {
-      const userId = user._id; // Make sure you have access to the logged-in user's ID
-      const [manualVisionsRes, templateVisionsRes] = await Promise.all([
-        axios.get(`${apiUrl}/api/get-all?board=true`),
-        axios.get(`${apiUrl}/api/get-template-visions/${userId}?board=true`),
-      ]);
-
-      // Merge both responses into one array
-      const combinedVisions = [
-        ...manualVisionsRes.data,
-        ...templateVisionsRes.data,
-      ];
-
-      setBoardVision(combinedVisions); // Update the state with merged visions
-    } catch (error) {
-      console.error("Error fetching updated visions:", error);
-    }
-  };
+  const { isSidebarOpen } = useSidebar(); // Sidebar state
   return (
     <div>
       <body>
         <div className={`main-wrapper ${isSidebarOpen ? "sidebar-open" : ""}`}>
           <SideNav />
           <TopNav />
+          <div className="page-wrapper" style={{ marginTop: "10px" }}>
+            <div className="content">
+              <div
+                class="text-gray max-w-screen-2xl px-4 py-8 mx-auto"
+                id="featured-categories:homepage_featured_categories"
+              >
+                <div class="w-full">
+                  <div class="text-center mb-6 md:mb-12">
+                    <h3 class="text-2xl md:text-3xl xl:text-4xl">
+                      Resource every mission.
+                    </h3>
+                    <h4 class="text-lg mt-4 max-w-xl mx-auto">
+                      Your church covers a lot of ground. That's why Lifeway
+                      provides the world's leading selection of ministry
+                      resources.
+                    </h4>
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 2xl:gap-12">
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/church-ordering"
+                        title="Church Ordering"
+                        data-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Church Ordering text displayed over a blurred background of a laptop screen"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/church-ordering?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Church Ordering
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/vacation-bible-school"
+                        title="Vacation Bible School"
+                        data-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Two children smiling and holding a purple kite"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/VBS-2025-Category-Image-350x350px?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Vacation Bible School
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/bible-studies"
+                        data-link-text="featured-categories::homepage featured categories::featured categories bible studies"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible studies"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt=""
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/bible_studies_homepage_categories_2024?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Bible Studies
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/bible-studies/sunday-school"
+                        title="Sunday School"
+                        data-link-text="featured-categories::homepage featured categories::featured categories sunday school"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories sunday school"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Stack of Bible study booklets with 'Bible Studies for Life' on top"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_sunschool?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Sunday School
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/bibles"
+                        data-link-text="featured-categories::homepage featured categories::featured categories bibles"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories bibles"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Bible"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_bibles?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Bibles
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/church-supplies"
+                        title="Church Supplies"
+                        data-link-text="featured-categories::homepage featured categories::featured categories church supplies"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories church supplies"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="A prepackaged communion cup with grape juice and a wafer"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_churchsuplies?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Church Supplies
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/books"
+                        title="Books"
+                        data-link-text="featured-categories::homepage featured categories::featured categories books"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories books"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Two books: Eyes Up by Alexandra Hoover and A Fruitful Life by Yahaira Ramo"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_books_2022_border?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Books
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/events"
+                        data-link-text="featured-categories::homepage featured categories::featured categories events"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories events"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Priscilla Shirer speaking passionately on stage"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/catetories_events?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Events
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/events/christian-summer-camps"
+                        title="Camps"
+                        data-link-text="featured-categories::homepage featured categories::featured categories camps"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories camps"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="A group of energetic young people, with one wearing a pink cowboy hat and sunglasses"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_camps?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Camps
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/worship"
+                        title="Worship "
+                        data-link-text="featured-categories::homepage featured categories::featured categories worship"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories worship"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Close-up of a person playing an acoustic guitar"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/featured_category_worship?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Worship
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/shop/bible-studies/video"
+                        data-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Bible study video sessions"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/bible_study_video_sessions_homepage_kristi_mclelland?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Bible Study Video Sessions
+                        </p>
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        href="/en/special-emphasis/clearance"
+                        title="Clearance"
+                        data-link-text="featured-categories::homepage featured categories::featured categories clearance"
+                        data-analytics-link-text="featured-categories::homepage featured categories::featured categories clearance"
+                      >
+                        <span class="relative block">
+                          <img
+                            alt="Clearance text over a solid yellow background"
+                            loading="lazy"
+                            width="350"
+                            height="350"
+                            decoding="async"
+                            data-nimg="1"
+                            class="mb-1 w-full align-middle rounded-2xl group-image-link-focus-ring aspect-square object-cover"
+                            style={{ color: "transparent" }}
+                            sizes="(max-width: 719px) 50vw, (max-width: 959px) 33vw, (max-width: 1439px) 25vw, (min-width: 1440px) 330px"
+                            srcset="
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0   256w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0   384w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0   640w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0   750w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0   828w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0 1080w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0 1200w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0 1920w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0 2048w,
+                        https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0 3840w
+                      "
+                            src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/Clearance-450x450-1?_a=BAVAZGDW0"
+                          />
+                        </span>
+                        <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
+                          Clearance
+                        </p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </body>
     </div>
