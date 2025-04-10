@@ -114,7 +114,7 @@ const AdminDashboard = () => {
                   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 2xl:gap-12">
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/church-ordering"
                         title="Church Ordering"
                         data-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/vacation-bible-school"
                         title="Vacation Bible School"
                         data-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
@@ -192,7 +192,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/bible-studies"
                         data-link-text="featured-categories::homepage featured categories::featured categories bible studies"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible studies"
@@ -230,7 +230,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/bible-studies/sunday-school"
                         title="Sunday School"
                         data-link-text="featured-categories::homepage featured categories::featured categories sunday school"
@@ -269,7 +269,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/bibles"
                         data-link-text="featured-categories::homepage featured categories::featured categories bibles"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bibles"
@@ -307,7 +307,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/church-supplies"
                         title="Church Supplies"
                         data-link-text="featured-categories::homepage featured categories::featured categories church supplies"
@@ -346,7 +346,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/books"
                         title="Books"
                         data-link-text="featured-categories::homepage featured categories::featured categories books"
@@ -385,7 +385,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/events"
                         data-link-text="featured-categories::homepage featured categories::featured categories events"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories events"
@@ -423,7 +423,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/events/christian-summer-camps"
                         title="Camps"
                         data-link-text="featured-categories::homepage featured categories::featured categories camps"
@@ -462,7 +462,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/worship"
                         title="Worship "
                         data-link-text="featured-categories::homepage featured categories::featured categories worship"
@@ -501,7 +501,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/shop/bible-studies/video"
                         data-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
@@ -539,7 +539,7 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                       <a
-                        class="text-gray hover:underline group outline-0 data-link-track data-analytics-link-track"
+                        class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/en/special-emphasis/clearance"
                         title="Clearance"
                         data-link-text="featured-categories::homepage featured categories::featured categories clearance"
@@ -887,17 +887,17 @@ const AdminDashboard = () => {
                                       <div>
                                         <div class="text-center text-red text-xl">
                                           <span>
-                                            <div class="text-gray font-semibold">
+                                            <div class="text-black font-semibold">
                                               $18.28
                                             </div>
-                                            <div class="text-sm text-gray-64 line-through">
+                                            <div class="text-sm text-black-64 line-through">
                                               was $21.50
                                             </div>
                                           </span>
                                         </div>
                                       </div>
                                       <button
-                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-gray border-2 border-yellow hover:text-gray-3 hover:bg-yellow-hover focus:text-gray-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
+                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-black border-2 border-yellow hover:text-black-3 hover:bg-yellow-hover focus:text-black-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
                                         data-product="001148445"
                                         data-analytics-product="001148445"
                                         data-slide-count="17"
@@ -1223,12 +1223,12 @@ const AdminDashboard = () => {
                                     </div>
                                     <div class="flex flex-between items-center justify-between min-h-[48px]">
                                       <div>
-                                        <div class="text-center text-red text-xl !text-gray font-semibold">
+                                        <div class="text-center text-red text-xl !text-black font-semibold">
                                           <span>$5.25</span>
                                         </div>
                                       </div>
                                       <button
-                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-gray border-2 border-yellow hover:text-gray-3 hover:bg-yellow-hover focus:text-gray-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
+                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-black border-2 border-yellow hover:text-black-3 hover:bg-yellow-hover focus:text-black-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
                                         data-product="005849947"
                                         data-analytics-product="005849947"
                                         data-slide-count="17"
@@ -1555,17 +1555,17 @@ const AdminDashboard = () => {
                                       <div>
                                         <div class="text-center text-red text-xl">
                                           <span>
-                                            <div class="text-gray font-semibold">
+                                            <div class="text-black font-semibold">
                                               $8.99
                                             </div>
-                                            <div class="text-sm text-gray-64 line-through">
+                                            <div class="text-sm text-black-64 line-through">
                                               was $17.99
                                             </div>
                                           </span>
                                         </div>
                                       </div>
                                       <button
-                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-gray border-2 border-yellow hover:text-gray-3 hover:bg-yellow-hover focus:text-gray-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
+                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-black border-2 border-yellow hover:text-black-3 hover:bg-yellow-hover focus:text-black-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
                                         data-product="005849030"
                                         data-analytics-product="005849030"
                                         data-slide-count="17"
@@ -1871,12 +1871,12 @@ const AdminDashboard = () => {
                                     </div>
                                     <div class="flex flex-between items-center justify-between min-h-[48px]">
                                       <div>
-                                        <div class="text-center text-red text-xl !text-gray font-semibold">
+                                        <div class="text-center text-red text-xl !text-black font-semibold">
                                           <span>$3.90</span>
                                         </div>
                                       </div>
                                       <button
-                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-gray border-2 border-yellow hover:text-gray-3 hover:bg-yellow-hover focus:text-gray-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
+                                        class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-yellow text-black border-2 border-yellow hover:text-black-3 hover:bg-yellow-hover focus:text-black-3 focus:bg-yellow-hover active:bg-yellow-active px-4 py-1.5 text-sm mt-4 hover:cursor-pointer solid-focus-ring !mt-0 ml-auto !py-3 fill-gray hover:fill-black slider-tile-link"
                                         data-product="005075106.2025-SUM"
                                         data-analytics-product="005075106.2025-SUM"
                                         data-slide-count="17"
