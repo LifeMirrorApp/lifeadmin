@@ -489,7 +489,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -533,7 +533,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -577,7 +577,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -702,7 +702,7 @@ const Books = () => {
                                 data-testid="product-title"
                               >
                                 <a
-                                  href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                  href="/books/single-book"
                                   title="A Fruitful Life Journaling Devotional"
                                   class="search-tile__link"
                                   data-product="005832275"
@@ -1127,7 +1127,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1171,7 +1171,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1215,7 +1215,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1340,7 +1340,7 @@ const Books = () => {
                                 data-testid="product-title"
                               >
                                 <a
-                                  href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                  href="/books/single-book"
                                   title="A Fruitful Life Journaling Devotional"
                                   class="search-tile__link"
                                   data-product="005832275"
@@ -1765,7 +1765,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1809,7 +1809,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1853,7 +1853,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -1978,7 +1978,7 @@ const Books = () => {
                                 data-testid="product-title"
                               >
                                 <a
-                                  href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                  href="/books/single-book"
                                   title="A Fruitful Life Journaling Devotional"
                                   class="search-tile__link"
                                   data-product="005832275"
@@ -2403,7 +2403,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -2447,7 +2447,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -2491,7 +2491,7 @@ const Books = () => {
                                         }}
                                       >
                                         <a
-                                          href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                          href="/books/single-book"
                                           class="IMAGE-SQUARE search-tile__link block aspect-square relative w-full h-full object-bottom object-contain flex items-center justify-center"
                                           data-product="005832275"
                                           data-position="1"
@@ -2616,7 +2616,7 @@ const Books = () => {
                                 data-testid="product-title"
                               >
                                 <a
-                                  href="/en/product/a-fruitful-life-journaling-devotional-P005832275"
+                                  href="/books/single-book"
                                   title="A Fruitful Life Journaling Devotional"
                                   class="search-tile__link"
                                   data-product="005832275"

@@ -35,6 +35,8 @@ import Bible from "./admin/Bible";
 import Revised from "./admin/Revised";
 import Books from "./admin/Books";
 import BookList from "./admin/BookList";
+import SingleBook from "./admin/SingleBook";
+import Cart from "./admin/Cart";
 
 const AdminRoute = [
   {
@@ -93,6 +95,22 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Books />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/books/single-book",
+    element: (
+      <AuthGuard>
+        <SingleBook />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/cart",
+    element: (
+      <AuthGuard>
+        <Cart />
       </AuthGuard>
     ),
   },
