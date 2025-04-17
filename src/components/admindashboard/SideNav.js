@@ -201,13 +201,6 @@ const SideNav = () => {
                       className={`${
                         openSubmenus.has(0) ? "subdrop active" : ""
                       } ${isActive("/home") ? "active-menu" : ""}`.trim()}
-                      style={{
-                        backgroundColor: isActive("/digital")
-                          ? "#800080"
-                          : "transparent",
-                        borderRadius: "5px",
-                        padding: "10px",
-                      }}
                     >
                       <MdPermMedia
                         size={20}
