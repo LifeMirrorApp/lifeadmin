@@ -32,83 +32,16 @@ const Digital = () => {
           <div className="page-wrapper" style={{ marginTop: "10px" }}>
             <div className="content">
               <div
-                id="promo-banner:homepage_promo_banner_women-s_events"
-                class="w-full max-w-screen-2xl mx-auto flex justify-center md:justify-start text-center md:text-left overflow-hidden py-8 md:px-4"
-              >
-                <div class="relative w-full">
-                  <div
-                    class="block relative w-full flex overflow-hidden md:rounded-2xl h-full items-center min-h-[350px]"
-                    style={{ backgroundColor: "#dddddd" }}
-                  >
-                    <a
-                      href="/books/single-cat"
-                      target="_self"
-                      class="absolute inset-0 opacity-30 h-full md:opacity-100 md:w-[60%] md:left-auto"
-                    >
-                      <img
-                        alt="Women's Events - Find an Event"
-                        loading="lazy"
-                        width="1000"
-                        height="469"
-                        decoding="async"
-                        data-nimg="1"
-                        class="w-full h-full object-cover"
-                        style={{ color: "transparent" }}
-                        sizes="(max-width: 720px) 100vw, (max-width: 1439px) 60vw, (min-width: 1440px) 850px"
-                        srcset="
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0   384w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0   640w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0   750w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0   828w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0 1080w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0 1200w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0 1920w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0 2048w,
-                  https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0 3840w
-                "
-                        src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/womens_event_homepage_big_promo_1?_a=BAVAZGDW0"
-                      />
-                    </a>
-                    <div class="block relative h-full flex items-center px-4 py-8 max-w-full min-w-full md:min-w-[40%] md:max-w-[40%] md:px-6 xl:py-16 xl:px-16 md:order-1 text-black">
-                      <div class="w-full">
-                        <h2 class="font-semibold mb-2 text-2xl sm:text-[32px] sm:leading-tight">
-                          Daily Verse
-                        </h2>
-                        <p class="mb-4">
-                          For God so loved teh workd that he gave his only
-                          begotten Son, that whosoever believess in me hould not
-                          perish but have everlasting life
-                        </p>
-                        <p style={{ width: "60%", margin: "auto" }}>
-                          <a
-                            class="block rounded-full leading-relaxed text-center transition-all duration-200 solid-focus-ring button bg-white text-black border-2 border-white hover:text-black focus:text-black hover:bg-gray-e focus:bg-gray-e active:bg-gray-e px-6 pt-2 pb-2.5 text-base border border-[#eeeeee] PRIMARY-BUTTON data-link-track data-analytics-link-track"
-                            href="/en/events/women"
-                            target="_self"
-                            data-link-text="promo-banner::homepage promo banner women-s events::find an event"
-                            data-analytics-link-text="promo-banner::homepage promo banner women-s events::find an event"
-                          >
-                            John 3:16
-                          </a>
-                        </p>
-                        <div class="flex flex-wrap gap-4 mt-4 justify-center md:justify-start"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
                 class="text-black max-w-screen-2xl px-4 py-8 mx-auto"
                 id="featured-categories:homepage_featured_categories"
               >
                 <div class="w-full">
                   <div class="text-center mb-6 md:mb-12">
                     <h3 class="text-2xl md:text-3xl xl:text-4xl">
-                      Find any resources
+                      Find any digital resources
                     </h3>
                     <h4 class="text-lg mt-4 max-w-xl mx-auto">
-                      Your church covers a lot of ground. That's why Lifeway
-                      provides the world's leading selection of ministry
-                      resources.
+                      All digital resources available
                     </h4>
                   </div>
                   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-4 md:gap-6 2xl:gap-12">
