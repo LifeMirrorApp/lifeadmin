@@ -13,6 +13,7 @@ import {
   FiBookOpen,
   FiChevronDown,
 } from "react-icons/fi";
+import { MdPermMedia } from "react-icons/md";
 import { useLocation } from "react-router-dom"; // Import useLocation
 
 const SideNav = () => {
@@ -194,18 +195,18 @@ const SideNav = () => {
                       </ul>
                     )}
                   </li>
-                  <li className="submenu">
+                  {/*} <li className="submenu">
                     <a
                       href="#"
                       onClick={(e) => {
                         e.preventDefault();
-                        toggleSubmenu(1);
+                        toggleSubmenu(3);
                       }}
                       className={`${
-                        openSubmenus.has(1) ? "subdrop active" : ""
+                        openSubmenus.has(3) ? "subdrop active" : ""
                       }`.trim()}
                       style={{
-                        backgroundColor: openSubmenus.has(1)
+                        backgroundColor: openSubmenus.has(3)
                           ? "#800080"
                           : "transparent",
                         borderRadius: "5px",
@@ -214,12 +215,12 @@ const SideNav = () => {
                     >
                       <FiBookOpen
                         size={20}
-                        color={openSubmenus.has(1) ? "white" : "black"}
+                        color={openSubmenus.has(3) ? "white" : "black"}
                       />
                       <span
                         style={{
                           fontSize: "18px",
-                          color: openSubmenus.has(1) ? "white" : "black",
+                          color: openSubmenus.has(3) ? "white" : "black",
                         }}
                       >
                         Digital Media
@@ -227,13 +228,13 @@ const SideNav = () => {
                       <FiChevronDown
                         style={{
                           marginLeft: "auto",
-                          transform: openSubmenus.has(1)
+                          transform: openSubmenus.has(3)
                             ? "rotate(180deg)"
                             : "rotate(0deg)",
                         }}
                       />
                     </a>
-                    {openSubmenus.has(1) && (
+                    {openSubmenus.has(3) && (
                       <ul className="submenu-list">
                         <li>
                           <a href="/bible/kjv">KJV (King James Version)</a>
@@ -261,6 +262,38 @@ const SideNav = () => {
                         </li>
                       </ul>
                     )}
+                  </li>*/}
+                  <li className="submenu">
+                    <a
+                      href="/digital"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleSubmenu(4);
+                      }}
+                      className={`${
+                        openSubmenus.has(4) ? "subdrop active" : ""
+                      } ${isActive("/digital") ? "active-menu" : ""}`.trim()}
+                      style={{
+                        backgroundColor: isActive("/digital")
+                          ? "#800080"
+                          : "transparent",
+                        borderRadius: "5px",
+                        padding: "10px",
+                      }}
+                    >
+                      <MdPermMedia
+                        size={20}
+                        color={isActive("/digital") ? "white" : "black"}
+                      />
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          color: isActive("/digital") ? "white" : "black",
+                        }}
+                      >
+                        Digital Media
+                      </span>
+                    </a>
                   </li>
                   <li className="submenu">
                     <a
@@ -373,9 +406,9 @@ const SideNav = () => {
           </li>
           <li className="nav-item">
             <a href="/booklist">
-              <FiBookOpen
+              <MdPermMedia
               // size={20}
-              // color={openSubmenus.has(1) ? "white" : "black"}
+              // color={isActive("/digital") ? "white" : "black"}
               />
               <span>Media</span>
             </a>
