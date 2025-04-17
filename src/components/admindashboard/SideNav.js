@@ -195,6 +195,35 @@ const SideNav = () => {
                       </ul>
                     )}
                   </li>
+                  <li className="submenu">
+                    <a
+                      href="/digital"
+                      className={`${
+                        openSubmenus.has(0) ? "subdrop active" : ""
+                      } ${isActive("/home") ? "active-menu" : ""}`.trim()}
+                      style={{
+                        backgroundColor: isActive("/digital")
+                          ? "#800080"
+                          : "transparent",
+                        borderRadius: "5px",
+                        padding: "10px",
+                      }}
+                    >
+                      <MdPermMedia
+                        size={20}
+                        color={isActive("/digital") ? "white" : "black"}
+                      />
+                      <span
+                        style={{
+                          fontSize: "18px",
+                          color: isActive("/digital") ? "white" : "black",
+                        }}
+                      >
+                        Digital Media
+                      </span>
+                    </a>
+                  </li>
+
                   {/*} <li className="submenu">
                     <a
                       href="#"
@@ -263,39 +292,7 @@ const SideNav = () => {
                       </ul>
                     )}
                   </li>*/}
-                  <li className="submenu">
-                    <a
-                      href="/digital"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        toggleSubmenu(4);
-                      }}
-                      className={`${
-                        openSubmenus.has(4) ? "subdrop active" : ""
-                      } ${isActive("/digital") ? "active-menu" : ""}`.trim()}
-                      style={{
-                        backgroundColor: isActive("/digital")
-                          ? "#800080"
-                          : "transparent",
-                        borderRadius: "5px",
-                        padding: "10px",
-                      }}
-                    >
-                      <MdPermMedia
-                        size={20}
-                        color={isActive("/digital") ? "white" : "black"}
-                      />
-                      <span
-                        href="/digital"
-                        style={{
-                          fontSize: "18px",
-                          color: isActive("/digital") ? "white" : "black",
-                        }}
-                      >
-                        Digital Media
-                      </span>
-                    </a>
-                  </li>
+
                   <li className="submenu">
                     <a
                       href="/community"
