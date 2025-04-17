@@ -196,12 +196,7 @@ const SideNav = () => {
                     )}
                   </li>
                   <li className="submenu">
-                    <a
-                      href="/digital"
-                      className={`${
-                        openSubmenus.has(0) ? "subdrop active" : ""
-                      } ${isActive("/home") ? "active-menu" : ""}`.trim()}
-                    >
+                    <a href="/digital">
                       <MdPermMedia
                         size={20}
                         color={isActive("/digital") ? "white" : "black"}
