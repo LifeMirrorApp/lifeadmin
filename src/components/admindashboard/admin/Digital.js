@@ -526,7 +526,7 @@ const Digital = () => {
                   class="max-w-[1440px] mx-auto sm:px-4"
                 >
                   <h2 class="font-sofia font-semibold text-xl md:text-2xl mb-4 px-4 sm:px-0 lg:mb-6 text-center">
-                    Trending Books
+                    Trending DIgital Resources
                   </h2>
                   <section>
                     <div class="main-swiper-wrap relative w-full px-4 group">
