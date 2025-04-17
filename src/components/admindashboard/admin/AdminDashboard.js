@@ -41,7 +41,7 @@ const AdminDashboard = () => {
                     style={{ backgroundColor: "#dddddd" }}
                   >
                     <a
-                      href="/en/events/women"
+                      href="/books/single-cat"
                       target="_self"
                       class="absolute inset-0 opacity-30 h-full md:opacity-100 md:w-[60%] md:left-auto"
                     >
@@ -115,7 +115,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/church-ordering"
+                        href="/books/single-cat"
                         title="Church Ordering"
                         data-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
@@ -154,7 +154,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/vacation-bible-school"
+                        href="/books/single-cat"
                         title="Vacation Bible School"
                         data-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
@@ -193,7 +193,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/bible-studies"
+                        href="/books/single-cat"
                         data-link-text="featured-categories::homepage featured categories::featured categories bible studies"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible studies"
                       >
@@ -231,7 +231,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/bible-studies/sunday-school"
+                        href="/books/single-cat"
                         title="Sunday School"
                         data-link-text="featured-categories::homepage featured categories::featured categories sunday school"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories sunday school"
@@ -270,7 +270,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/bibles"
+                        href="/books/single-cat"
                         data-link-text="featured-categories::homepage featured categories::featured categories bibles"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bibles"
                       >
@@ -308,7 +308,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/church-supplies"
+                        href="/books/single-cat"
                         title="Church Supplies"
                         data-link-text="featured-categories::homepage featured categories::featured categories church supplies"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories church supplies"
@@ -347,7 +347,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/books"
+                        href="/books/single-cat"
                         title="Books"
                         data-link-text="featured-categories::homepage featured categories::featured categories books"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories books"
@@ -386,7 +386,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/events"
+                        href="/books/single-cat"
                         data-link-text="featured-categories::homepage featured categories::featured categories events"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories events"
                       >
@@ -424,7 +424,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/events/christian-summer-camps"
+                        href="/books/single-cat"
                         title="Camps"
                         data-link-text="featured-categories::homepage featured categories::featured categories camps"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories camps"
@@ -463,7 +463,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/worship"
+                        href="/books/single-cat"
                         title="Worship "
                         data-link-text="featured-categories::homepage featured categories::featured categories worship"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories worship"
@@ -502,7 +502,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/shop/bible-studies/video"
+                        href="/books/single-cat"
                         data-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible study video sessions"
                       >
@@ -540,7 +540,7 @@ const AdminDashboard = () => {
                     <div>
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
-                        href="/en/special-emphasis/clearance"
+                        href="/books/single-cat"
                         title="Clearance"
                         data-link-text="featured-categories::homepage featured categories::featured categories clearance"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories clearance"
@@ -613,7 +613,7 @@ const AdminDashboard = () => {
                               <div class="flex flex-col p-1 group h-full">
                                 <a
                                   class="flex flex-col items-center text-blue hover:text-blue-hover hover:underline slider-tile-link focus-visible solid-focus-ring"
-                                  href="/en/product/communion-cups-plastic-cups-1000-count-box-P001148445"
+                                  href="/books/single-cat"
                                   title="Communion Cups - Plastic Cups (1000 Count Box)"
                                   data-link-text="product-slider::trending items::communion cups - plastic cups -1000 count box-"
                                   data-analytics-link-text="product-slider::trending items::communion cups - plastic cups -1000 count box-"
@@ -658,7 +658,7 @@ const AdminDashboard = () => {
                                     <p class="text-center my-4 line-clamp-3 !my-2 !text-left font-semibold">
                                       <a
                                         class="slider-tile-link"
-                                        href="/en/product/communion-cups-plastic-cups-1000-count-box-P001148445"
+                                        href="/books/single-cat"
                                         data-product="001148445"
                                         data-analytics-product="001148445"
                                         data-slide-count="17"
@@ -951,7 +951,7 @@ const AdminDashboard = () => {
                               <div class="flex flex-col p-1 group h-full">
                                 <a
                                   class="flex flex-col items-center text-blue hover:text-blue-hover hover:underline slider-tile-link focus-visible solid-focus-ring"
-                                  href="/en/product/vbs-2025-certificates-of-completion-package-of-50-certificates-P005849947"
+                                  href="/books/single-cat"
                                   title="VBS 2025 Certificates Of Completion (Package of 50 Certificates)"
                                   data-link-text="product-slider::trending items::vbs 2025 certificates of completion -package of 50"
                                   data-analytics-link-text="product-slider::trending items::vbs 2025 certificates of completion -package of 50"
@@ -996,7 +996,7 @@ const AdminDashboard = () => {
                                     <p class="text-center my-4 line-clamp-3 !my-2 !text-left font-semibold">
                                       <a
                                         class="slider-tile-link"
-                                        href="/en/product/vbs-2025-certificates-of-completion-package-of-50-certificates-P005849947"
+                                        href="/books/single-cat"
                                         data-product="005849947"
                                         data-analytics-product="005849947"
                                         data-slide-count="17"
@@ -1282,7 +1282,7 @@ const AdminDashboard = () => {
                               <div class="flex flex-col p-1 group h-full">
                                 <a
                                   class="flex flex-col items-center text-blue hover:text-blue-hover hover:underline slider-tile-link focus-visible solid-focus-ring"
-                                  href="/en/product/i-surrender-all-P005849030"
+                                  href="/books/single-cat"
                                   title="I Surrender All"
                                   data-link-text="product-slider::trending items::i surrender all"
                                   data-analytics-link-text="product-slider::trending items::i surrender all"
@@ -1327,7 +1327,7 @@ const AdminDashboard = () => {
                                     <p class="text-center my-4 line-clamp-3 !my-2 !text-left font-semibold">
                                       <a
                                         class="slider-tile-link"
-                                        href="/en/product/i-surrender-all-P005849030"
+                                        href="/books/single-cat"
                                         data-product="005849030"
                                         data-analytics-product="005849030"
                                         data-slide-count="17"
@@ -1619,7 +1619,7 @@ const AdminDashboard = () => {
                               <div class="flex flex-col p-1 group h-full">
                                 <a
                                   class="flex flex-col items-center text-blue hover:text-blue-hover hover:underline slider-tile-link focus-visible solid-focus-ring"
-                                  href="/en/product/open-windows-large-print-summer-2025-P005075106-2025-SUM"
+                                  href="/books/single-cat"
                                   title="Open Windows Large Print - Summer 2025"
                                 >
                                   <div class="pb-full relative w-full">
@@ -1645,7 +1645,7 @@ const AdminDashboard = () => {
                                     <p class="text-center my-4 line-clamp-3 !my-2 !text-left font-semibold">
                                       <a
                                         class="slider-tile-link"
-                                        href="/en/product/open-windows-large-print-summer-2025-P005075106-2025-SUM"
+                                        href="/books/single-cat"
                                         data-product="005075106.2025-SUM"
                                         data-analytics-product="005075106.2025-SUM"
                                         data-slide-count="17"

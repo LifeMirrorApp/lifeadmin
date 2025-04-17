@@ -27,7 +27,7 @@ const SideNav = () => {
     }
     setOpenSubmenus(updatedSubmenus);
   };
-  const location = useLocation(); // Get current page path
+  const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
   return (

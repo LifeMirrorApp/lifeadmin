@@ -37,6 +37,7 @@ import Books from "./admin/Books";
 import BookList from "./admin/BookList";
 import SingleBook from "./admin/SingleBook";
 import Cart from "./admin/Cart";
+import SingleCat from "./admin/SingleCat";
 
 const AdminRoute = [
   {
@@ -103,6 +104,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <SingleBook />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/books/single-cat",
+    element: (
+      <AuthGuard>
+        <SingleCat />
       </AuthGuard>
     ),
   },
