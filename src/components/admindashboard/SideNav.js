@@ -286,6 +286,7 @@ const SideNav = () => {
                         color={isActive("/digital") ? "white" : "black"}
                       />
                       <span
+                        href="/digital"
                         style={{
                           fontSize: "18px",
                           color: isActive("/digital") ? "white" : "black",
@@ -405,7 +406,7 @@ const SideNav = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="/booklist">
+            <a href="/digital">
               <MdPermMedia
               // size={20}
               // color={isActive("/digital") ? "white" : "black"}
