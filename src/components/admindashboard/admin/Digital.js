@@ -49,13 +49,13 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
-                        title="Church Ordering"
+                        title="Video Sessions"
                         data-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories - church ordering"
                       >
                         <span class="relative block">
                           <img
-                            alt="Church Ordering text displayed over a blurred background of a laptop screen"
+                            alt="Video Session"
                             loading="lazy"
                             width="350"
                             height="350"
@@ -80,7 +80,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Church Ordering
+                          Video Session
                         </p>
                       </a>
                     </div>
@@ -88,13 +88,13 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
-                        title="Vacation Bible School"
+                        title="Audio Session"
                         data-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories vacation bible school"
                       >
                         <span class="relative block">
                           <img
-                            alt="Two children smiling and holding a purple kite"
+                            alt="Audio Seession"
                             loading="lazy"
                             width="350"
                             height="350"
@@ -119,7 +119,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Vacation Bible School
+                          Audio Session
                         </p>
                       </a>
                     </div>
@@ -127,6 +127,7 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
+                        title="Onine Session"
                         data-link-text="featured-categories::homepage featured categories::featured categories bible studies"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories bible studies"
                       >
@@ -157,7 +158,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Bible Studies
+                          Online Session
                         </p>
                       </a>
                     </div>
@@ -165,7 +166,7 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
-                        title="Sunday School"
+                        title="Virtual Event"
                         data-link-text="featured-categories::homepage featured categories::featured categories sunday school"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories sunday school"
                       >
@@ -196,7 +197,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Sunday School
+                          Virtual Event
                         </p>
                       </a>
                     </div>
@@ -234,7 +235,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Bibles
+                          Webiner
                         </p>
                       </a>
                     </div>
@@ -242,7 +243,7 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
-                        title="Church Supplies"
+                        title="Webinar"
                         data-link-text="featured-categories::homepage featured categories::featured categories church supplies"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories church supplies"
                       >
@@ -273,7 +274,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Church Supplies
+                          Webinar
                         </p>
                       </a>
                     </div>
@@ -281,7 +282,7 @@ const Digital = () => {
                       <a
                         class="text-black hover:underline group outline-0 data-link-track data-analytics-link-track"
                         href="/books/single-cat"
-                        title="Books"
+                        title="Podcast"
                         data-link-text="featured-categories::homepage featured categories::featured categories books"
                         data-analytics-link-text="featured-categories::homepage featured categories::featured categories books"
                       >
@@ -312,7 +313,7 @@ const Digital = () => {
                           />
                         </span>
                         <p class="text-center text-xs sm:text-base 2xl:text-lg font-bold group-dashed-focus-ring group-hover:underline">
-                          Books
+                          Podcast
                         </p>
                       </a>
                     </div>
