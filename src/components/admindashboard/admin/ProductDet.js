@@ -1076,74 +1076,7 @@ const ProductDet = () => {
                             class="custom-rich-text px-4 w-full md:w-1/2"
                           >
                             <h3 class="text-xl font-semibold mb-4">Overview</h3>
-                            <span>
-                              <strong>
-                                People were designed for community. We long to
-                                know and be known by others, and local churches
-                                can meet that need by gathering people together
-                                in groups.{" "}
-                              </strong>
-                              <br />
-                              <br />
-                              In a world facing a loneliness epidemic and
-                              praising radical individualism, Christians are
-                              siloed as they experience anxiety, depression,
-                              disease, infertility, divorce, and other
-                              tragedies. Groups ministries are vital to local
-                              churches fighting the notion that we can face this
-                              life alone.
-                              <br />
-                              <br />
-                              Small groups, discipleship groups, community
-                              groups, life groups––there's no one-size-fits-all
-                              formula for your church's groups ministry.
-                              <em>A Short Guide to Groups </em>is an accessible
-                              resource for your church to evaluate or start a
-                              groups ministry. With practical tips to consider,
-                              authors Jared Musgrove and Justin Elafros explain
-                              that while every ministry and group is different,
-                              there are several principles leaders can remember:
-                              <ul>
-                                <li>
-                                  Groups exist for community with God and other
-                                  people.
-                                </li>
-                                <li>
-                                  There is no lasting transformation in anyone
-                                  without another person or group of people.
-                                </li>
-                                <li>
-                                  The more relational your church is, the more
-                                  transformational your church will become.
-                                </li>
-                                <li>
-                                  Each person in every group is a gift from God
-                                  to the others in that group.
-                                </li>
-                                <li>
-                                  Where groups go, the church will follow.
-                                </li>
-                                <li>
-                                  Where the church goes, groups will follow.
-                                </li>
-                              </ul>
-                              The New Testament is clear that people are called
-                              to do life together; in fact, the call to love one
-                              another can be found sixty-six times.{" "}
-                              <em>A Short Guide to Groups</em> can help pastors
-                              and ministry leaders guide their people away from
-                              the loneliness epidemic and toward radical
-                              togetherness instead.
-                            </span>
-                            <div>
-                              <a
-                                data-testid="about-this-item-product-family-link"
-                                href="/en/product-family/short-guide"
-                                class="link inline-block text-lg mt-2"
-                              >
-                                Shop All "Short Guide"
-                              </a>
-                            </div>
+                            <span>{product.description}</span>
                           </div>
                           <div
                             data-testid="about-this-item-media-block-wrapper"
@@ -2686,31 +2619,34 @@ const ProductDet = () => {
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
                             Case Quantity
                           </dt>
-                          <dd class="inline-block w-1/2 px-4">24</dd>
+                          <dd class="inline-block w-1/2 px-4">
+                            {product.quantityAvailable}
+                          </dd>
                         </div>
                         <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
                             Format
                           </dt>
-                          <dd class="inline-block w-1/2 px-4">Hardcover</dd>
+                          <dd class="inline-block w-1/2 px-4">
+                            {product.format}
+                          </dd>
                         </div>
                         <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
                             ISBN10
                           </dt>
-                          <dd class="inline-block w-1/2 px-4">1087780799</dd>
+                          <dd class="inline-block w-1/2 px-4">
+                            {product.ISBN}
+                          </dd>
                         </div>
-                        <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
-                          <dt class="inline-block w-1/2 px-4 align-top font-semibold">
-                            ISBN13
-                          </dt>
-                          <dd class="inline-block w-1/2 px-4">9781087780795</dd>
-                        </div>
+
                         <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
                             Language
                           </dt>
-                          <dd class="inline-block w-1/2 px-4">English</dd>
+                          <dd class="inline-block w-1/2 px-4">
+                            {product.language}
+                          </dd>
                         </div>
                         <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
@@ -2746,7 +2682,9 @@ const ProductDet = () => {
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
                             Product Type
                           </dt>
-                          <dd class="inline-block w-1/2 px-4">Non-Fiction</dd>
+                          <dd class="inline-block w-1/2 px-4">
+                            {product.productType}
+                          </dd>
                         </div>
                         <div class="odd:bg-gray-e odd:rounded-2xl py-4 px-2 lg:px-4 inline-block w-full">
                           <dt class="inline-block w-1/2 px-4 align-top font-semibold">
