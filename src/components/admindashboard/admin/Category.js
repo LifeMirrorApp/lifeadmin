@@ -97,7 +97,7 @@
 
 // export default Category;
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // ✅ To get the slug
+import { useParams, Link } from "react-router-dom"; // ✅ To get the slug
 import axios from "axios";
 import TopNav from "../TopNav";
 import SideNav from "../SideNav";
@@ -170,7 +170,9 @@ const Category = () => {
                     alt={child.name}
                     className="w-full rounded-2xl object-cover aspect-square"
                   />
-                  <p className="mt-2 font-semibold">{child.name}</p>
+                  <p className="mt-2 font-semibold">
+                    <Link to={`/product/${child._id}`}>{child.name}</Link>
+                  </p>
                 </div>
               ))}
             </div>

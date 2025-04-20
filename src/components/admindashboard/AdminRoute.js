@@ -40,6 +40,7 @@ import Cart from "./admin/Cart";
 import SingleCat from "./admin/SingleCat";
 import Digital from "./admin/Digital";
 import Category from "./admin/Category";
+import Product from "./admin/Product";
 
 const AdminRoute = [
   {
@@ -82,6 +83,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Category />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/product/:id",
+    element: (
+      <AuthGuard>
+        <Product />
       </AuthGuard>
     ),
   },
