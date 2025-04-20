@@ -464,12 +464,12 @@ const SideNav = () => {
               <span>Bible</span>
             </a>
           </li>
-          <li className="nav-item">
+          {/*} <li className="nav-item">
             <a href="/booklist">
               <FiBookOpen size={20} />
               <span>Books</span>
             </a>
-          </li>
+          </li>*/}
 
           {parentCategories.map((cat, index) => {
             const isOpen = openSubmenus.has(100 + index);
