@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "./oga4.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -30,7 +30,27 @@ const SideNav = () => {
   };
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
+  const [categories, setCategories] = useState([]);
+  const [parentCategories, setParentCategories] = useState([]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/api/categories`);
+        const allCategories = res.data;
+        setCategories(allCategories);
+        const parents = allCategories.filter(
+          (cat) => !cat.parent || cat.parent === null
+        );
+        setParentCategories(parents);
+      } catch (error) {
+        console.error("Failed to fetch categories", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
   return (
     <div className="main-wrapper">
       <div
@@ -355,6 +375,63 @@ const SideNav = () => {
                       </span>
                     </a>
                   </li>
+
+                  {parentCategories.map((cat, index) => {
+                    const isOpen = openSubmenus.has(100 + index); // Offset index to avoid conflict with your current indexes
+                    return (
+                      <li className="submenu" key={cat._id}>
+                        <a
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            toggleSubmenu(100 + index);
+                          }}
+                          className={`${isOpen ? "subdrop active" : ""}`}
+                          style={{
+                            backgroundColor: isOpen ? "#800080" : "transparent",
+                            borderRadius: "5px",
+                            padding: "10px",
+                          }}
+                        >
+                          <FiBookOpen
+                            size={20}
+                            color={isOpen ? "white" : "black"}
+                          />
+                          <span
+                            style={{
+                              fontSize: "18px",
+                              color: isOpen ? "white" : "black",
+                            }}
+                          >
+                            {cat.name}
+                          </span>
+                          <FiChevronDown
+                            style={{
+                              marginLeft: "auto",
+                              transform: isOpen
+                                ? "rotate(180deg)"
+                                : "rotate(0deg)",
+                            }}
+                          />
+                        </a>
+                        {isOpen && (
+                          <ul className="submenu-list">
+                            {/* Render subcategories if needed here */}
+                            {/* You can filter categories with parent === cat._id */}
+                            {categories
+                              .filter((sub) => sub.parent === cat._id)
+                              .map((sub) => (
+                                <li key={sub._id}>
+                                  <a href={`/category/${sub.slug}`}>
+                                    {sub.name}
+                                  </a>
+                                </li>
+                              ))}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </li>
             </ul>
