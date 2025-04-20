@@ -454,53 +454,87 @@ const SideNav = () => {
         <ul className="nav">
           <li className="nav-item">
             <a href="/home">
-              <FiHome />
+              <FiHome size={20} />
               <span>Home</span>
             </a>
           </li>
           <li className="nav-item">
             <a href="/bible">
-              <FiBookOpen
-              // size={20}
-              // color={openSubmenus.has(1) ? "white" : "black"}
-              />
+              <FiBookOpen size={20} />
               <span>Bible</span>
             </a>
           </li>
           <li className="nav-item">
             <a href="/booklist">
-              <FiBookOpen
-              // size={20}
-              // color={openSubmenus.has(1) ? "white" : "black"}
-              />
+              <FiBookOpen size={20} />
               <span>Books</span>
             </a>
           </li>
-          <li className="nav-item">
-            <a href="/digital">
-              <MdPermMedia
-              // size={20}
-              // color={isActive("/digital") ? "white" : "black"}
-              />
-              <span>Media</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="/settings">
-              <FiUsers
-              // size={20}
-              // color={isActive("/community") ? "white" : "black"}
-              />
 
-              <span>Community</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#">
-              <FiSettings />
-              <span>Settings</span>
-            </a>
-          </li>
+          {parentCategories.map((cat, index) => {
+            const isOpen = openSubmenus.has(100 + index);
+            return (
+              <li className="nav-item" key={cat._id}>
+                <div
+                  className={`nav-link ${isOpen ? "subdrop active" : ""}`}
+                  style={{
+                    backgroundColor: isOpen ? "#800080" : "transparent",
+                    borderRadius: "5px",
+                    padding: "10px",
+                    display: "flex",
+                    flexDirection: "column", // 👈 vertical layout
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <FiBookOpen size={24} color={isOpen ? "white" : "black"} />
+
+                  <Link
+                    to={`/category/${cat._id}`}
+                    style={{
+                      fontSize: "14px",
+                      color: isOpen ? "white" : "black",
+                      marginTop: "6px", // 👈 spacing below icon
+                      textDecoration: "none",
+                    }}
+                  >
+                    {cat.name}
+                  </Link>
+
+                  {categories.some((sub) => sub.parent === cat._id) && (
+                    <FiChevronDown
+                      style={{
+                        marginTop: "4px",
+                        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.2s",
+                        color: isOpen ? "white" : "black",
+                      }}
+                      onClick={() => toggleSubmenu(100 + index)}
+                    />
+                  )}
+                </div>
+
+                {isOpen && (
+                  <ul className="submenu-list text-center">
+                    {categories
+                      .filter((sub) => sub.parent === cat._id)
+                      .map((sub) => (
+                        <li key={sub._id}>
+                          <Link
+                            to={`/category/${sub._id}`}
+                            className="text-sm text-gray-700 hover:text-purple-700 block py-1"
+                          >
+                            {sub.name}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
