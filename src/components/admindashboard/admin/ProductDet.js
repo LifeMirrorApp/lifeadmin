@@ -100,18 +100,6 @@ const ProductDet = () => {
                     class="w-full text-gray font-sofia print:w-[1024px]"
                     data-testid="pdp-id-005841383"
                   >
-                    <div class="my-0 mx-auto text-right max-w-[1440px]">
-                      <button
-                        class="link rounded font-semibold px-3 py-1 text-sm mr-1 mb-1"
-                        type="button"
-                        data-analytics-language="es"
-                        data-testid="language-selector"
-                        data-tracking-component="button"
-                        data-tracking-id="language-toggle"
-                      >
-                        ¿Hablas español?
-                      </button>
-                    </div>
                     <section id="details-grid" class="max-w-screen-2xl mx-auto">
                       <div class="grid grid-cols-5 auto-rows-min gap-x-6 px-4 mt-2 print:block print:w-full">
                         <div class="relative col-span-full md:row-span-3 md:col-span-3 pb-4 md:pb-12 print:block print:w-1/2 print:float-left print:pr-8">
@@ -127,27 +115,10 @@ const ProductDet = () => {
                                   data-testid="product-slider-main-image"
                                 >
                                   <img
-                                    alt=""
-                                    loading="eager"
-                                    width="720"
-                                    height="720"
-                                    decoding="async"
-                                    data-nimg="1"
-                                    class="max-w-full max-h-full w-auto h-auto"
-                                    style={{ color: "transparent" }}
-                                    sizes="(max-width: 719px) 100vw, (max-width: 1439px) 60vw,(min-width: 720px) 850px"
-                                    srcset="
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0   384w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0   640w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_750/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0   750w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_828/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0   828w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1080/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 1080w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1200/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 1200w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_1920/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 1920w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_2048/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 2048w,
-                            https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 3840w
-                          "
-                                    src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_3840/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0"
+                                    src={product.images}
+                                    alt={product.name}
+                                    className="w-full object-cover"
+                                    loading="lazy"
                                   />
                                 </button>
                               </div>
@@ -180,7 +151,7 @@ const ProductDet = () => {
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_128/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 1x,
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 2x
                                     "
-                                              src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0"
+                                              src={product.image}
                                               style={{ color: "transparent" }}
                                             />
                                           </div>
@@ -207,7 +178,7 @@ const ProductDet = () => {
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_128/f_auto/q_auto/v1/9781087780795_01?_a=BAVAZGDW0 1x,
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795_01?_a=BAVAZGDW0 2x
                                     "
-                                              src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795_01?_a=BAVAZGDW0"
+                                              src={product.image}
                                               style={{ color: "transparent" }}
                                             />
                                           </div>
@@ -234,7 +205,7 @@ const ProductDet = () => {
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_128/f_auto/q_auto/v1/9781087780795_02?_a=BAVAZGDW0 1x,
                                       https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795_02?_a=BAVAZGDW0 2x
                                     "
-                                              src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_256/f_auto/q_auto/v1/9781087780795_02?_a=BAVAZGDW0"
+                                              src={product.image}
                                               style={{ color: "transparent" }}
                                             />
                                           </div>
@@ -252,7 +223,7 @@ const ProductDet = () => {
                                     <div class="IMAGE-TILE-BUTTON overflow-hidden rounded-md relative w-full h-0 pb-1/1">
                                       <div class="absolute inset-0 flex content-center items-center justify-center overflow-hidden">
                                         <img
-                                          src="https://cf-images.us-east-1.prod.boltdns.net/v1/jit/1143621176001/b380dda0-4d68-4f44-bc4c-bcf74b61d0ee/main/160x90/29s546ms/match/image.jpg"
+                                          src={product.image}
                                           alt="View product videos.  Opens to a modal."
                                           class="w-auto h-auto object-cover h-full w-full"
                                           width="110"
@@ -420,10 +391,6 @@ const ProductDet = () => {
                                         decoding="async"
                                         data-nimg="1"
                                         class="relative !max-w-none w-[22px]"
-                                        srcset="
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 1x,
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 2x
-                              "
                                         src={product.image}
                                         style={{ color: "transparent" }}
                                       />
@@ -436,10 +403,6 @@ const ProductDet = () => {
                                       decoding="async"
                                       data-nimg="1"
                                       class="w-full relative"
-                                      srcset="
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 1x,
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 2x
-                            "
                                       src={product.image}
                                       style={{ color: "transparent" }}
                                     />
@@ -457,10 +420,6 @@ const ProductDet = () => {
                                         decoding="async"
                                         data-nimg="1"
                                         class="relative !max-w-none w-[22px]"
-                                        srcset="
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 1x,
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 2x
-                              "
                                         src={product.image}
                                         style={{ color: "transparent" }}
                                       />
@@ -473,11 +432,7 @@ const ProductDet = () => {
                                       decoding="async"
                                       data-nimg="1"
                                       class="w-full relative"
-                                      srcset="
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 1x,
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 2x
-                            "
-                                      src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0"
+                                      src={product.image}
                                       style={{ color: "transparent" }}
                                     />
                                   </div>
@@ -494,11 +449,7 @@ const ProductDet = () => {
                                         decoding="async"
                                         data-nimg="1"
                                         class="relative !max-w-none w-[22px]"
-                                        srcset="
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 1x,
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 2x
-                              "
-                                        src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0"
+                                        src={product.image}
                                         style={{ color: "transparent" }}
                                       />
                                     </span>
@@ -510,11 +461,7 @@ const ProductDet = () => {
                                       decoding="async"
                                       data-nimg="1"
                                       class="w-full relative"
-                                      srcset="
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 1x,
-                              https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 2x
-                            "
-                                      src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0"
+                                      src={product.image}
                                       style={{ color: "transparent" }}
                                     />
                                   </div>
@@ -531,11 +478,7 @@ const ProductDet = () => {
                                         decoding="async"
                                         data-nimg="1"
                                         class="relative !max-w-none w-[22px]"
-                                        srcset="
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 1x,
-                                https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 2x
-                              "
-                                        src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0"
+                                        src={product.image}
                                         style={{ color: "transparent" }}
                                       />
                                     </span>
@@ -572,7 +515,7 @@ const ProductDet = () => {
                                 https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 1x,
                                 https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0 2x
                               "
-                                        src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-solid?_a=BAVAZGDW0"
+                                        src={product.image}
                                         style={{ color: "transparent" }}
                                       />
                                     </span>
@@ -588,7 +531,7 @@ const ProductDet = () => {
                               https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_32/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 1x,
                               https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0 2x
                             "
-                                      src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_48/f_auto/q_auto/v1/review-star-transparent?_a=BAVAZGDW0"
+                                      src={product.image}
                                       style={{ color: "transparent" }}
                                     />
                                   </div>
@@ -884,7 +827,7 @@ const ProductDet = () => {
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 1x,
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0 2x
                           "
-                                    src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781087780795?_a=BAVAZGDW0"
+                                    src={product.image}
                                     style={{ color: "transparent" }}
                                   />
                                 </div>
@@ -939,7 +882,7 @@ const ProductDet = () => {
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/9781087758633?_a=BAVAZGDW0 1x,
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781087758633?_a=BAVAZGDW0 2x
                           "
-                                    src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781087758633?_a=BAVAZGDW0"
+                                    src={product.image}
                                     style={{ color: "transparent" }}
                                   />
                                 </a>
@@ -999,7 +942,7 @@ const ProductDet = () => {
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_384/f_auto/q_auto/v1/9781430095866?_a=BAVAZGDW0 1x,
                             https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781430095866?_a=BAVAZGDW0 2x
                           "
-                                    src="https://assets.lifeway.com/image/upload/d_noimage.jpg/c_limit,w_640/f_auto/q_auto/v1/9781430095866?_a=BAVAZGDW0"
+                                    src={product.image}
                                     style={{ color: "transparent" }}
                                   />
                                 </a>
@@ -1115,7 +1058,7 @@ const ProductDet = () => {
                                     data-player="YJXhO2osU"
                                     data-account="1143621176001"
                                     poster="https://cf-images.us-east-1.prod.boltdns.net/v1/jit/1143621176001/b380dda0-4d68-4f44-bc4c-bcf74b61d0ee/main/1280x720/29s546ms/match/image.jpg"
-                                    src="blob:https://www.lifeway.com/38d0e8f0-4bef-46ef-b5e7-baa6d9f0c66a"
+                                    src={product.image}
                                     aria-labelledby="vjs-title-bar-title-14167"
                                   ></video>
                                   <div class="vjs-poster" aria-disabled="false">
@@ -1123,7 +1066,7 @@ const ProductDet = () => {
                                       <img
                                         loading="lazy"
                                         alt=""
-                                        src="https://cf-images.us-east-1.prod.boltdns.net/v1/jit/1143621176001/b380dda0-4d68-4f44-bc4c-bcf74b61d0ee/main/1280x720/29s546ms/match/image.jpg"
+                                        src={product.image}
                                       />
                                     </picture>
                                   </div>
