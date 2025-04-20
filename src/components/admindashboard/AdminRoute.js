@@ -39,6 +39,7 @@ import SingleBook from "./admin/SingleBook";
 import Cart from "./admin/Cart";
 import SingleCat from "./admin/SingleCat";
 import Digital from "./admin/Digital";
+import Category from "./admin/Category";
 
 const AdminRoute = [
   {
@@ -73,6 +74,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <AllRefine />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/category/:id",
+    element: (
+      <AuthGuard>
+        <Category />
       </AuthGuard>
     ),
   },

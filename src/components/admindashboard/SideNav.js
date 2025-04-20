@@ -377,54 +377,63 @@ const SideNav = () => {
                   </li>
 
                   {parentCategories.map((cat, index) => {
-                    const isOpen = openSubmenus.has(100 + index); // Offset index to avoid conflict with your current indexes
+                    const isOpen = openSubmenus.has(100 + index);
                     return (
                       <li className="submenu" key={cat._id}>
-                        <a
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            toggleSubmenu(100 + index);
-                          }}
+                        <div
                           className={`${isOpen ? "subdrop active" : ""}`}
                           style={{
                             backgroundColor: isOpen ? "#800080" : "transparent",
                             borderRadius: "5px",
                             padding: "10px",
+                            display: "flex",
+                            alignItems: "center",
+                            cursor: "pointer",
                           }}
                         >
                           <FiBookOpen
                             size={20}
                             color={isOpen ? "white" : "black"}
                           />
-                          <span
+
+                          {/* This is now a real Link that goes to the category page */}
+                          <Link
+                            to={`/category/${cat._id}`}
                             style={{
                               fontSize: "18px",
                               color: isOpen ? "white" : "black",
+                              marginLeft: "10px",
+                              textDecoration: "none",
+                              flexGrow: 1,
                             }}
                           >
                             {cat.name}
-                          </span>
-                          <FiChevronDown
-                            style={{
-                              marginLeft: "auto",
-                              transform: isOpen
-                                ? "rotate(180deg)"
-                                : "rotate(0deg)",
-                            }}
-                          />
-                        </a>
+                          </Link>
+
+                          {/* Toggle submenu only when there's a child category */}
+                          {categories.some((sub) => sub.parent === cat._id) && (
+                            <FiChevronDown
+                              style={{
+                                marginLeft: "auto",
+                                transform: isOpen
+                                  ? "rotate(180deg)"
+                                  : "rotate(0deg)",
+                                transition: "transform 0.2s",
+                              }}
+                              onClick={() => toggleSubmenu(100 + index)}
+                            />
+                          )}
+                        </div>
+
                         {isOpen && (
                           <ul className="submenu-list">
-                            {/* Render subcategories if needed here */}
-                            {/* You can filter categories with parent === cat._id */}
                             {categories
                               .filter((sub) => sub.parent === cat._id)
                               .map((sub) => (
                                 <li key={sub._id}>
-                                  <a href={`/category/${sub.slug}`}>
+                                  <Link to={`/category/${sub._id}`}>
                                     {sub.name}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                           </ul>
