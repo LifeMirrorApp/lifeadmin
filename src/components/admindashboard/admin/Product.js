@@ -472,7 +472,11 @@ const Product = () => {
                     alt={product.name}
                     className="w-full h-48 object-cover rounded-xl"
                   />
-                  <h3 className="mt-2 text-lg font-semibold">{product.name}</h3>
+                  <h3 className="mt-2 text-lg font-semibold">
+                    {" "}
+                    <Link to={`/product/${product._id}`}>{product.name}</Link>
+                  </h3>
+
                   <p className="text-sm text-gray-500">{product.description}</p>
                   <p className="mt-1 font-bold text-yellow-600">
                     ${product.discountPrice}

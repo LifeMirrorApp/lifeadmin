@@ -41,6 +41,7 @@ import SingleCat from "./admin/SingleCat";
 import Digital from "./admin/Digital";
 import Category from "./admin/Category";
 import Product from "./admin/Product";
+import ProductDet from "./admin/ProductDet";
 
 const AdminRoute = [
   {
@@ -91,6 +92,14 @@ const AdminRoute = [
     element: (
       <AuthGuard>
         <Product />
+      </AuthGuard>
+    ),
+  },
+  {
+    path: "/product-details/:id",
+    element: (
+      <AuthGuard>
+        <ProductDet />
       </AuthGuard>
     ),
   },
