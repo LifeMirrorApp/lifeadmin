@@ -474,7 +474,9 @@ const Product = () => {
                   />
                   <h3 className="mt-2 text-lg font-semibold">
                     {" "}
-                    <Link to={`/product/${product._id}`}>{product.name}</Link>
+                    <Link to={`/product-details/${product._id}`}>
+                      {product.name}
+                    </Link>
                   </h3>
 
                   <p className="text-sm text-gray-500">{product.description}</p>
