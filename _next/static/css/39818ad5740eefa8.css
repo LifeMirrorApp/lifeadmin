@@ -5418,13 +5418,13 @@ input.number-spin-none[type="number"]::-webkit-outer-spin-button {
   vertical-align: text-top !important;
 }
 .lw-formio .bg-primary {
-  background-color: #007bff !important;
+  background-color: purple !important;
 }
 .lw-formio a.bg-primary:focus,
 .lw-formio a.bg-primary:hover,
 .lw-formio button.bg-primary:focus,
 .lw-formio button.bg-primary:hover {
-  background-color: #0062cc !important;
+  background-color: purple !important;
 }
 .lw-formio .bg-secondary {
   background-color: #6c757d !important;

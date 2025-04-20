@@ -199,12 +199,12 @@ const SideNav = () => {
                     <a href="/digital">
                       <MdPermMedia
                         size={20}
-                        color={isActive("/digital") ? "white" : "black"}
+                        color={isActive("/digital") ? "black" : "black"}
                       />
                       <span
                         style={{
                           fontSize: "18px",
-                          color: isActive("/digital") ? "white" : "black",
+                          color: isActive("/digital") ? "black" : "black",
                         }}
                       >
                         Digital Media
@@ -286,10 +286,10 @@ const SideNav = () => {
                       href="/community"
                       onClick={(e) => {
                         e.preventDefault();
-                        toggleSubmenu(2);
+                        toggleSubmenu(5);
                       }}
                       className={`${
-                        openSubmenus.has(2) ? "subdrop active" : ""
+                        openSubmenus.has(5) ? "subdrop active" : ""
                       } ${isActive("/community") ? "active-menu" : ""}`.trim()}
                       style={{
                         backgroundColor: isActive("/community")
